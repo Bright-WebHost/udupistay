@@ -42,7 +42,12 @@ const homestayImages: Record<string, string[]> = {
   sunrisehome:   Array.from({ length: 15 }, (_, i) =>
     i < 9 ? `/sunrise/${i + 1}.webp` : `/sunrise/S${i - 8}.webp`
   ),
-  chaletlabonne: Array.from({ length: 14 }, (_, i) => `/chalet/${i + 1}.webp`),
+  chaletlabonne: [
+    '/chalet/new/1.JPG', '/chalet/new/2.webp', '/chalet/new/3.JPG',
+    '/chalet/new/4.JPG', '/chalet/new/5.JPG', '/chalet/new/bedroom.webp',
+    '/chalet/new/hall2.JPG', '/chalet/new/kitchen2.JPG', '/chalet/new/kitchen3.JPG',
+    '/chalet/new/scene2.JPG', '/chalet/new/scene3.JPG'
+  ],
   viewpoint:     Array.from({ length: 10 }, (_, i) => `/view/${i + 1}.webp`),
 };
 
@@ -89,6 +94,36 @@ export default function HomestayPage() {
 
   return (
     <div className="min-h-screen bg-[#fbfaf7]">
+      {/* Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LodgingBusiness",
+            name: homestay.title,
+            description: homestay.longDescription,
+            image: `https://udupistay.com${homestay.image}`,
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Udupi",
+              addressRegion: "Karnataka",
+              postalCode: "576101",
+              addressCountry: "IN",
+            },
+            telephone: "+91 89712 20576",
+            url: `https://udupistay.com/${homestay.route}`,
+            priceRange: "₹",
+            numberOfBedrooms: homestay.rooms,
+            numberOfBathroomsNumber: homestay.bathrooms,
+            occupancy: { "@type": "QuantitativeValue", maxValue: homestay.guests },
+            amenityFeature: homestay.amenities.map((a: string) => ({
+              "@type": "LocationFeatureSpecification",
+              name: a,
+            })),
+          }),
+        }}
+      />
 
       {/* ══ HERO ══════════════════════════════════════════════════════ */}
       <section className="relative w-full overflow-hidden bg-black" style={{ height: "45vh", minHeight: "260px" }}>
@@ -206,7 +241,6 @@ export default function HomestayPage() {
         rooms={homestay.rooms}
         bathrooms={homestay.bathrooms}
         guests={homestay.guests}
-        pricePerNight={homestay.pricePerNight}
       />
 
       {/* ══ CINEMATIC GALLERY ═════════════════════════════════════════ */}

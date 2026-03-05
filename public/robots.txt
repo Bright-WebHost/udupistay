@@ -1,0 +1,21 @@
+# Robots.txt for Udupi Homestay
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /_next/
+Disallow: /api/
+
+# Crawl delay to be respectful to server
+Crawl-delay: 1
+
+# Specific rules for popular search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://udupistay.com/sitemap.xml

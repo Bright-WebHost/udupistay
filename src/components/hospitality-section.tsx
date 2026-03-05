@@ -60,7 +60,7 @@ export default function HospitalitySection() {
               className="inline-block text-xs md:text-sm font-medium tracking-[0.25em] uppercase mb-3 md:mb-4"
               style={{ color: '#849826' }}
             >
-              The Heart of Hospitality
+              Exceptional Hospitality
             </motion.span>
 
             {/* Heading */}
@@ -71,7 +71,7 @@ export default function HospitalitySection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold uppercase tracking-[0.02em] leading-tight text-gray-900 mb-4 md:mb-6"
             >
-              Welcome To a World of Warmth & Elegance
+              Experience Authentic Udupi Living
             </motion.h2>
 
             {/* Description */}
@@ -82,10 +82,7 @@ export default function HospitalitySection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-sm md:text-base lg:text-lg text-gray-600 leading-relaxed mb-6 md:mb-8"
             >
-              Discover the charm of Udupi through authentic homestay experiences. Nestled in the heart of coastal Karnataka, 
-              our carefully curated homestays offer you a perfect blend of traditional hospitality and modern comfort. 
-              Whether you're seeking a peaceful retreat or an adventure-filled getaway, we connect you with the finest 
-              homestays that feel like a home away from home.
+              Strategically located near Malpe Beach, Krishna Temple, and Manipal University, our curated homestays offer modern amenities, authentic local cuisine, and professional hospitality for families and travelers.
             </motion.p>
 
             {/* Action Buttons */}

@@ -2,14 +2,14 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { Car, Wifi, Bell, Key, Utensils, Waves, Phone } from 'lucide-react';
+import { Car, Wifi, Sparkles, Key, Home, Waves, Phone } from 'lucide-react';
 
 const facilities = [
   { title: 'Free Car Parking',    icon: Car,       filled: false },
   { title: 'Fast Wi-Fi Internet', icon: Wifi,      filled: true  },
-  { title: 'Room Service',        icon: Bell,      filled: false },
+  { title: 'Daily Housekeeping',  icon: Sparkles,  filled: false },
   { title: "Smart Key's",         icon: Key,       filled: true  },
-  { title: 'Food & Drink',        icon: Utensils,  filled: false },
+  { title: 'Home Kitchen',        icon: Home,      filled: false },
   { title: 'Swimming Pool',       icon: Waves,     filled: true  },
 ];
 

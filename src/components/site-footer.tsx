@@ -64,9 +64,6 @@ export default function SiteFooter() {
                 <Link href="/project" className="hover:text-[#849826] transition">
                   Home Stays
                 </Link>
-                <Link href="/catering" className="hover:text-[#849826] transition">
-                  Caterings
-                </Link>
                 <Link href="/contact" className="hover:text-[#849826] transition">
                   Contact
                 </Link>

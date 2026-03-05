@@ -9,6 +9,29 @@ export default function StaysPage() {
   const [scrollY, setScrollY] = useState(0);
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
 
+  const homestaysSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Udupi Homestays",
+    itemListElement: homestays.map((stay, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "LodgingBusiness",
+        name: stay.title,
+        description: stay.description,
+        url: `https://udupistay.com/${stay.route}`,
+        image: `https://udupistay.com${stay.image}`,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Udupi",
+          addressRegion: "Karnataka",
+          addressCountry: "IN",
+        },
+      },
+    })),
+  };
+
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -34,6 +57,10 @@ export default function StaysPage() {
 
   return (
     <div className="bg-white text-[#2c2c2c] overflow-hidden font-body">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homestaysSchema) }}
+      />
       <style jsx global>{`
         /* Font classes are now set globally via Tailwind config */
 
@@ -188,8 +215,11 @@ export default function StaysPage() {
             <div className="h-px w-10 bg-white/40" />
           </div>
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold mb-4 leading-tight">
-            EXQUISITE HOMESTAYS
+            BEST HOMESTAYS IN UDUPI
           </h1>
+          <p className="mx-auto max-w-3xl text-sm sm:text-base text-white/90 leading-relaxed">
+            Explore family, AC, and budget-friendly homestays in Udupi near Malpe Beach, Udupi Krishna Temple, and Manipal University — with options for homemade food and catering support.
+          </p>
           <div className="flex items-center justify-center gap-2 text-xs sm:text-sm">
             <span className="text-white/80">HOME</span>
             <span className="text-[#849826]">›</span>
@@ -202,6 +232,14 @@ export default function StaysPage() {
       {/* ═══════════════ PROPERTIES — PREMIUM ROYAL CARDS ═══════════════ */}
       <section className="py-16 sm:py-20 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-14">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-[#2c2c2c] mb-4 uppercase tracking-[0.04em]">
+              Udupi Karnataka Homestay Collection
+            </h2>
+            <p className="mx-auto max-w-4xl text-gray-600 text-sm sm:text-base leading-relaxed">
+              From homestays near Malpe Beach to stays near Sri Krishna Mutt and Manipal, this curated collection is designed for weekend getaways, family vacations, and group celebrations in coastal Karnataka.
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {homestays.map((stay, index) => (
               <Link 
@@ -224,12 +262,6 @@ export default function StaysPage() {
                     />
                     {/* Dark gradient for text readability */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                    
-                    {/* Premium badge with pulse animation */}
-                    <div className="absolute top-6 right-6 gold-badge bg-gradient-to-br from-[#849826] to-[#6d7d20] text-white px-5 py-3 backdrop-blur-sm">
-                      <p className="font-display font-bold text-lg leading-none">₹{stay.pricePerNight.toLocaleString()}</p>
-                      <p className="text-[10px] text-white/90 uppercase tracking-wider mt-1">Per Night</p>
-                    </div>
 
                     {/* Info bar at bottom */}
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-[#849826]/95 to-[#849826]/90 backdrop-blur-sm px-6 py-4">

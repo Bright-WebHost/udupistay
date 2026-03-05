@@ -9,7 +9,7 @@ const homestays = [
     id: 1,
     title: 'Chalet La Bonne Vie',
     description: 'Experience alpine charm and cozy comfort in our exclusive chalet',
-    image: '/chalet/h1.webp',
+    image: '/chalet/new/1.JPG',
     alt: 'Chalet',
   },
   {

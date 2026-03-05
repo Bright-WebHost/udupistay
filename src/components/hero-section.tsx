@@ -52,13 +52,13 @@ export default function HeroSection() {
               <div className="flex w-full items-end h-full gap-2">
                 <div className="flex flex-col items-start w-[52%] pb-0 justify-end animate-mobile-hero-fade">
                   <h1 className="text-white text-left text-[22px] sm:text-[32px] leading-tight font-serif font-semibold uppercase tracking-[0.02em] mb-[6px] animate-mobile-hero-slide">
-                    Hotel restin Best Hotel In Town
+                    Premium Homestays in Udupi
                   </h1>
                   <p className="text-left text-[11px] font-medium text-white mb-[10px] leading-relaxed">
-                    Thoughtful stays in Udupi with calm views, warm hospitality, and comfort that feels like home.
+                    Family-friendly accommodations near Malpe Beach, Krishna Temple, and Manipal.
                   </p>
                   <a
-                    href="/rooms"
+                    href="/homestays"
                     className="theme-btn relative inline-flex items-center justify-center text-white uppercase font-medium bg-[#849826] z-10 overflow-hidden h-[40px] px-[18px] leading-none shadow-[0_10px_30px_rgba(0,0,0,0.35)] group hover:bg-[#6f801f] transition-colors duration-300 text-[11px] font-semibold"
                   >
                     <span className="relative z-10">View Homestays</span>
@@ -126,17 +126,17 @@ export default function HeroSection() {
                 <h1
                   className={`${!isMobile ? "animate-fade-up-1" : ""} text-white text-left text-[26px] sm:text-[34px] md:text-[44px] lg:text-[56px] leading-tight font-serif font-semibold uppercase tracking-[0.02em] mb-[8px] md:mb-[10px]`}
                 >
-                  Hotel restin Best Hotel In Town
+                  Premium Homestays in Udupi, Karnataka
                 </h1>
                 {/* Description */}
                 <p
                   className={`${!isMobile ? "animate-fade-up-2" : ""} text-left text-[12px] md:text-[13px] font-medium text-white mb-[12px] md:mb-[14px] leading-relaxed`}
                 >
-                  Thoughtful stays in Udupi with calm views, warm hospitality, and comfort that feels like home.
+                  Discover exceptional family accommodations near Malpe Beach, Krishna Temple, and Manipal University.
                 </p>
                 {/* Button */}
                 <a
-                  href="/rooms"
+                  href="/homestays"
                   className={`${!isMobile ? "animate-fade-up-3" : ""} theme-btn relative inline-flex items-center justify-center text-white uppercase font-medium bg-[#849826] z-10 overflow-hidden h-[44px] md:h-[46px] px-[20px] md:px-[26px] leading-none shadow-[0_10px_30px_rgba(0,0,0,0.35)] group hover:bg-[#6f801f] transition-colors duration-300 text-[12px] md:text-[12px] font-semibold`}
                 >
                   <span className="relative z-10">View Homestays</span>

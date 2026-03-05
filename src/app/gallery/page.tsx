@@ -15,7 +15,12 @@ const homestayImages: Record<string, string[]> = {
   cottagehouse:  Array.from({ length: 11 }, (_, i) => `/Cottage/${i + 1}.webp`),
   topvilla:      Array.from({ length: 8 },  (_, i) => `/hilltop/${i + 1}.webp`),
   sunrisehome:   Array.from({ length: 9 },  (_, i) => `/sunrise/${i + 1}.webp`),
-  chaletlabonne: Array.from({ length: 14 }, (_, i) => `/chalet/${i + 1}.webp`),
+  chaletlabonne: [
+    '/chalet/new/1.JPG', '/chalet/new/2.webp', '/chalet/new/3.JPG',
+    '/chalet/new/4.JPG', '/chalet/new/5.JPG', '/chalet/new/bedroom.webp',
+    '/chalet/new/hall2.JPG', '/chalet/new/kitchen2.JPG', '/chalet/new/kitchen3.JPG',
+    '/chalet/new/scene2.JPG', '/chalet/new/scene3.JPG'
+  ],
   viewpoint:     Array.from({ length: 10 }, (_, i) => `/view/${i + 1}.webp`),
 };
 

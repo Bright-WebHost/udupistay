@@ -425,18 +425,18 @@ export default function AboutPage() {
             <div data-animate="who-left" className={`space-y-4 fade-left ${visibleSections.has('who-left') ? 'visible' : ''}`}>
               <p className="text-[#849826] text-xs sm:text-sm tracking-[0.25em] uppercase font-medium">Who We Are?</p>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight">
-                DISCOVER THE BEST LUXURY<br />
-                <span className="text-[#849826]">HOMESTAYS IN UDUPI</span>
+                DISCOVER THE BEST PREMIUM<br />
+                <span className="text-[#849826]">HOMESTAYS IN UDUPI, KARNATAKA</span>
               </h2>
               <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                We offer a range of services including buying, selling, and property management solutions. Our team of experienced professionals is committed to making the process of finding and securing your perfect property as seamless and stress-free as possible.
+                Welcome to Udupi Homestay, your gateway to authentic Karnataka hospitality. We specialize in curating exceptional holiday experiences near Malpe Beach, Sri Krishna Temple, and Manipal University. With over 8 years of dedicated service, we've welcomed 2,500+ guests to our carefully selected premium properties.
               </p>
               <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                Our agents specialize in finding the perfect homes and commercial properties, delivering the best of service at every step.
+                Our collection features 15 handpicked homestays ranging from cozy family stays to luxury 7-bedroom villas, each designed to provide comfort, warmth, and unforgettable memories for families, groups, and couples seeking authentic local experiences.
               </p>
               <div className="pt-1">
-                <p className="text-xs text-gray-700 mb-1 font-medium">Location:</p>
-                <p className="text-gray-600 text-sm">Udupi, Karnataka, India</p>
+                <p className="text-xs text-gray-700 mb-1 font-medium">Located in:</p>
+                <p className="text-gray-600 text-sm">Udupi, Karnataka, India • Near Malpe Beach & Sri Krishna Temple</p>
               </div>
 
               {/* Stats (mobile only) */}
@@ -510,19 +510,19 @@ export default function AboutPage() {
 
           {/* Header */}
           <div data-animate="svc-header" className={`text-center mb-14 fade-up ${visibleSections.has('svc-header') ? 'visible' : ''}`}>
-            <p className="text-[#849826] text-xs tracking-[0.3em] uppercase mb-3 font-light">Our Hotel Services</p>
+            <p className="text-[#849826] text-xs tracking-[0.3em] uppercase mb-3 font-light">Our Amenities & Services</p>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-white">
-              OUR COMFORTABLE <span className="text-[#849826] italic">SERVICES</span>
+              PREMIUM FACILITIES FOR YOUR <span className="text-[#849826] italic">COMFORT</span>
             </h2>
           </div>
 
           {/* Service Cards — 4 cards in mobile (2x2), 3 cards in desktop */}
           <div data-animate="svc-cards" className={`grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 stagger ${visibleSections.has('svc-cards') ? 'visible' : ''}`}>
             {[
-              { title:"ROOM SECURITY",  desc:"Secure lock systems and 24/7 monitoring for your peace of mind.", mobile: true },
-              { title:"FULL AMENITIES", desc:"Premium bedding, AC, and all essential comforts included.", mobile: true },
-              { title:"COMFORTABLE ROOMS", desc:"Spacious interiors with elegant traditional-modern design.", mobile: true },
-              { title:"24/7 SUPPORT", desc:"Round-the-clock assistance for all your needs and queries.", mobile: true },
+              { title:"SECURE STAYS",  desc:"Advanced security systems and 24/7 monitoring for guest safety.", mobile: true },
+              { title:"SPACIOUS HOMES", desc:"From cozy 2BHK to luxurious 7BHK villas with modern design.", mobile: true },
+              { title:"WiFi & AC", desc:"High-speed internet and climate control in all rooms.", mobile: true },
+              { title:"HOMEMADE MEALS", desc:"Authentic Karnataka cuisine with customizable catering options.", mobile: true },
             ].map((s,i)=>(
               <div 
                 key={i} 

@@ -11,8 +11,6 @@ export interface Homestay {
   rooms: number;
   guests: number;
   bathrooms: number;
-  price: string;
-  pricePerNight: number;
   highlights: string[];
   location: string;
   nearbyAttractions: string[];
@@ -25,8 +23,8 @@ export const homestays: Homestay[] = [
     subtitle: "Luxury Coastal Retreat",
     route: "Whitehouse",
     image: "/whitehouse.webp",
-    description: "Luxurious 6BHK Villa. Near Malpe Beach. Perfect for large groups and families.",
-    longDescription: "Experience true luxury at our iconic White House, a pristine coastal retreat featuring floor-to-ceiling windows, private balconies, and breathtaking ocean views. This architectural masterpiece combines contemporary comfort with timeless elegance. Located in Udupi city center, near the beautiful Malpe Beach, offering the perfect escape for discerning travelers.",
+    description: "Premium 7BHK family homestay in Udupi near Malpe Beach, perfect for large groups and celebrations with 8 modern bathrooms.",
+    longDescription: "Experience one of the best homestays in Udupi at White House, a premium 7-bedroom coastal villa with spacious interiors, private balconies, and elegant modern comfort. Located near Malpe Beach with easy access to Udupi city attractions, this luxury Udupi Karnataka homestay is perfect for large families, reunions, and group celebrations.",
     amenities: [
       "Private swimming pool",
       "Ocean view terrace",
@@ -38,18 +36,17 @@ export const homestays: Homestay[] = [
       "Parking facility"
     ],
     features: [
-      "6 bedrooms",
+      "7 bedrooms",
+      "8 bathrooms",
       "Large living spaces",
       "Modern furnishings",
       "Beach proximity",
       "Outdoor seating areas",
       "Well-maintained gardens"
     ],
-    rooms: 6,
+    rooms: 7,
     guests: 35,
-    bathrooms: 4,
-    price: "₹2,00,000+",
-    pricePerNight: 20000,
+    bathrooms: 8,
     highlights: [
       "Near Malpe Beach",
       "Perfect for large groups",
@@ -70,8 +67,8 @@ export const homestays: Homestay[] = [
     subtitle: "Spacious Bedrooms Paradise",
     route: "GardenVilla",
     image: "/gardenvilla.webp",
-    description: "5BHK spacious bedrooms and fully furnished villa. Perfect for family gatherings.",
-    longDescription: "Immerse yourself in luxury at our Garden Villa, a spacious 5-bedroom retreat offering fully furnished accommodations. This eco-conscious property seamlessly blends modern comfort with nature, featuring lush gardens, outdoor living spaces, and all the amenities needed for an unforgettable stay.",
+    description: "Spacious 5BHK Udupi homestay for families, accommodating up to 20 guests with 6 modern bathrooms and garden views.",
+    longDescription: "Garden Villa is a family homestay in Udupi designed for relaxed group stays, intimate events, and comfortable long weekends. With 5 spacious bedrooms and 6 bathrooms, landscaped outdoor spaces, and thoughtful amenities, it is a top choice for travelers seeking a premium homestay in Udupi, Karnataka.",
     amenities: [
       "Swimming pool",
       "Fully furnished rooms",
@@ -84,17 +81,15 @@ export const homestays: Homestay[] = [
     ],
     features: [
       "5 spacious bedrooms",
+      "6 bathrooms",
       "Fully furnished",
       "Modern kitchen",
       "Large gardens",
-      "Multiple bathrooms",
       "Well-designed interiors"
     ],
     rooms: 5,
     guests: 20,
-    bathrooms: 3,
-    price: "₹1,80,000+",
-    pricePerNight: 18000,
+    bathrooms: 6,
     highlights: [
       "Spacious bedrooms",
       "Family-friendly",
@@ -115,8 +110,8 @@ export const homestays: Homestay[] = [
     subtitle: "Air-Conditioned 3BHK Villa",
     route: "CottageHouse",
     image: "/cottagehouse.webp",
-    description: "Air-conditioned 3-BHK fully furnished villa. Perfect for small to medium families.",
-    longDescription: "Step into comfort at our Cottage House, a charming 3-bedroom fully furnished villa with air conditioning throughout. Located 7 km from Udupi and 15 km from Manipal, this cozy retreat offers the perfect balance of comfort and accessibility, ideal for family vacations and getaways.",
+    description: "AC 3-room cottage homestay near Udupi and Manipal, accommodating up to 8 guests with 4 modern bathrooms.",
+    longDescription: "Cottage House is an AC homestay near Manipal University and Udupi, offering a practical blend of comfort, value, and privacy. With 3 well-appointed rooms and 4 bathrooms, this fully furnished stay is ideal for families and small groups searching for a comfortable homestay in Udupi with convenient access to city and campus.",
     amenities: [
       "Air conditioning",
       "Fully furnished",
@@ -128,18 +123,16 @@ export const homestays: Homestay[] = [
       "Water supply"
     ],
     features: [
-      "3 bedrooms",
-      "Air-conditioned rooms",
+      "3 rooms",
+      "4 bathrooms",
+      "Air-conditioned",
       "Modern furnishings",
-      "Compact design",
-      "2 bathrooms",
+      "Well-designed",
       "Natural light"
     ],
     rooms: 3,
     guests: 8,
-    bathrooms: 2,
-    price: "₹1,20,000+",
-    pricePerNight: 12000,
+    bathrooms: 4,
     highlights: [
       "Air-conditioned",
       "Fully furnished",
@@ -160,8 +153,8 @@ export const homestays: Homestay[] = [
     subtitle: "Air-Conditioned 3BHK Villa",
     route: "TopVilla",
     image: "/hilltopvilla.webp",
-    description: "3-BHK Villa with Air Conditioning. Scenic elevated location with beautiful views.",
-    longDescription: "Command stunning views at our Hill Top Villa, a 3-bedroom air-conditioned villa with an elevated location offering panoramic vistas. Located 7 km from Udupi and 15 km from Manipal, this premium residence provides the perfect blend of comfort and scenic beauty for a memorable getaway.",
+    description: "Scenic AC 3BHK villa near Udupi and Manipal, accommodating up to 10 guests with 3 bathrooms and panoramic views.",
+    longDescription: "Hill Top Villa offers a peaceful, elevated stay experience with panoramic views and modern comforts. This AC homestay in Udupi, Karnataka features 3 bedrooms and 3 bathrooms, well-suited for families and couples who want a calm weekend getaway near Manipal University while staying close to key Udupi attractions.",
     amenities: [
       "Air conditioning",
       "Panoramic views",
@@ -174,17 +167,15 @@ export const homestays: Homestay[] = [
     ],
     features: [
       "3 bedrooms",
+      "3 bathrooms",
       "Elevated location",
       "Scenic views",
       "Air-conditioned",
-      "2 bathrooms",
       "Modern interiors"
     ],
     rooms: 3,
     guests: 10,
-    bathrooms: 2,
-    price: "₹1,35,000+",
-    pricePerNight: 13500,
+    bathrooms: 3,
     highlights: [
       "Scenic views",
       "Elevated location",
@@ -205,8 +196,8 @@ export const homestays: Homestay[] = [
     subtitle: "3BHK Brick House",
     route: "SunriseHome",
     image: "/sunrise home.webp",
-    description: "3-BHK Brick House with beautiful design. Ideal for small families and couples.",
-    longDescription: "Enjoy comfort and privacy at our Sunrise Home, a modern 3-bedroom brick house with thoughtful design and cozy interiors. Located 7 km from Udupi and 15 km from Manipal, this charming property is perfect for families seeking a peaceful retreat away from the city hustle.",
+    description: "Affordable 2BHK family homestay in Udupi, accommodating up to 6 guests with 3 bathrooms and cozy interiors.",
+    longDescription: "Sunrise Home is an affordable family homestay in Udupi, Karnataka with 2 bedrooms and 3 bathrooms for guests who prefer a private, quiet setting. With comfortable rooms and practical amenities, it is ideal for travelers searching for a budget-friendly Udupi homestay near Manipal and local dining spots.",
     amenities: [
       "Fully furnished",
       "Complete kitchen",
@@ -218,18 +209,16 @@ export const homestays: Homestay[] = [
       "Basic amenities"
     ],
     features: [
-      "3 bedrooms",
+      "2 bedrooms",
+      "3 bathrooms",
       "Brick construction",
       "Modern design",
       "Spacious rooms",
-      "2 bathrooms",
       "Well-lit interiors"
     ],
-    rooms: 3,
+    rooms: 2,
     guests: 6,
-    bathrooms: 2,
-    price: "₹1,00,000+",
-    pricePerNight: 10000,
+    bathrooms: 3,
     highlights: [
       "Budget-friendly",
       "Comfortable stay",
@@ -250,8 +239,8 @@ export const homestays: Homestay[] = [
     subtitle: "2BHK Modern House",
     route: "ChaletLabonne",
     image: "/chaletlabonnevie.webp",
-    description: "2-BHK Modern house with Bird sanctuary and Farm. Unique nature experience.",
-    longDescription: "Experience modern living in harmony with nature at Chalet La Bonne Vie, a charming 2-bedroom modern house featuring access to a bird sanctuary and working farm. Located 7 km from Udupi and 15 km from Manipal, this unique property offers an authentic connection with nature and wildlife.",
+    description: "Unique 2BHK nature homestay near Udupi, accommodating up to 5 guests with 3 bathrooms, bird sanctuary and farm access.",
+    longDescription: "Chalet La Bonne Vie is a distinctive homestay near Udupi featuring 2 bedrooms and 3 bathrooms for nature lovers who want a quieter, eco-inspired retreat. This modern home combines comfort with immersive outdoor experiences, making it an excellent choice for couples and small families seeking an offbeat Udupi homestay.",
     amenities: [
       "Modern furnishings",
       "Equipped kitchen",
@@ -264,17 +253,15 @@ export const homestays: Homestay[] = [
     ],
     features: [
       "2 bedrooms",
+      "3 bathrooms",
       "Modern design",
       "Bird sanctuary",
       "Farm access",
-      "1 bathroom",
       "Nature-focused"
     ],
     rooms: 2,
     guests: 5,
-    bathrooms: 1,
-    price: "₹85,000+",
-    pricePerNight: 8500,
+    bathrooms: 3,
     highlights: [
       "Unique bird sanctuary",
       "Farm experience",
@@ -295,31 +282,29 @@ export const homestays: Homestay[] = [
     subtitle: "Premium Retreat with Facilities",
     route: "ViewPoint",
     image: "/viewpoint.webp",
-    description: "Exclusive property with Jacuzzi, View Point, and BBQ Area. Premium amenities.",
-    longDescription: "Discover ultimate relaxation at Viewpoint Oasis, our premium retreat featuring state-of-the-art facilities including a jacuzzi, scenic viewpoint, and BBQ area. Located 7 km from Udupi and 15 km from Manipal, this sophisticated property is perfect for special occasions and group celebrations.",
+    description: "Premium Udupi homestay with stunning viewpoints, swimming pool, BBQ counter, and jacuzzi for group celebrations.",
+    longDescription: "Viewpoint Oasis is a premium homestay in Udupi with standout features including scenic viewpoints, swimming pool, and dedicated BBQ counter for group gatherings. Perfect for celebrations and upscale weekend escapes, this property suits guests looking for the best homestay in Udupi with comfort, privacy, and modern amenities.",
     amenities: [
+      "Scenic viewpoints",
+      "Swimming pool",
+      "BBQ counter",
       "Jacuzzi facility",
-      "BBQ area",
-      "Scenic viewpoint",
       "Fully furnished",
       "Kitchen facilities",
       "Dining area",
-      "Lounge space",
       "Parking & security"
     ],
     features: [
       "Premium amenities",
-      "Jacuzzi",
       "Viewpoint access",
-      "BBQ setup",
-      "Well-designed",
+      "Swimming pool",
+      "BBQ counter",
+      "Jacuzzi setup",
       "Modern facilities"
     ],
     rooms: 3,
     guests: 12,
     bathrooms: 2,
-    price: "₹1,50,000+",
-    pricePerNight: 15000,
     highlights: [
       "Jacuzzi facility",
       "BBQ area",
