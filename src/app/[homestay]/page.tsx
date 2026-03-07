@@ -19,12 +19,12 @@ import CinematicGallery from "@/components/Cinematicgallery";
 
 // All image/video/meta maps use ROUTE (lowercased) as key — never id
 const homestayVideos: Record<string, string> = {
-  whitehouse:    "/video/white.mp4",
-  gardenvilla:   "/video/garden.mp4",
-  cottagehouse:  "/video/cottage.mp4",
-  topvilla:      "/video/hilltop.mp4",
-  sunrisehome:   "/video/sunrise.mp4",
-  chaletlabonne: "/video/chalet.mp4",
+  whitehouse:    "https://gu3khmwuvvy06mma.public.blob.vercel-storage.com/videos/white.mp4",
+  gardenvilla:   "https://gu3khmwuvvy06mma.public.blob.vercel-storage.com/videos/garden.mp4",
+  cottagehouse:  "https://gu3khmwuvvy06mma.public.blob.vercel-storage.com/videos/cottage.mp4",
+  topvilla:      "https://gu3khmwuvvy06mma.public.blob.vercel-storage.com/videos/hilltop.mp4",
+  sunrisehome:   "https://gu3khmwuvvy06mma.public.blob.vercel-storage.com/videos/sunrise.mp4",
+  chaletlabonne: "https://gu3khmwuvvy06mma.public.blob.vercel-storage.com/videos/chalet.mp4",
 };
 
 const homestayImages: Record<string, string[]> = {
@@ -109,7 +109,7 @@ export default function HomestayPage() {
   const images    = homestayImages[rk] || [];
   const heroImage = images[0] || "/last.avif";
   const isViewpoint = homestay.route === "ViewPoint";
-  const video     = isViewpoint ? "/video/viewpoint.mp4" : homestayVideos[rk];
+  const video     = isViewpoint ? "https://gu3khmwuvvy06mma.public.blob.vercel-storage.com/videos/viewpoint.mp4" : homestayVideos[rk];
 
   return (
     <div className="min-h-screen bg-[#fbfaf7]">

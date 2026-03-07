@@ -2,10 +2,12 @@
  * Upload videos to Vercel Blob Storage
  * 
  * Steps to run:
- * 1. Go to Vercel Dashboard → Your Project → Settings → Environment Variables
- * 2. Create a new variable: BLOB_READ_WRITE_TOKEN
- * 3. Run: $env:BLOB_READ_WRITE_TOKEN="your-token-here"; node scripts/upload-videos-to-vercel.js
+ * 1. Make sure you've run: npx vercel env pull
+ * 2. Run: node scripts/upload-videos-to-vercel.js
  */
+
+// Load environment variables from .env.local
+require('dotenv').config({ path: '.env.local' });
 
 const { put } = require('@vercel/blob');
 const fs = require('fs');
@@ -57,6 +59,7 @@ async function uploadVideos() {
       const blob = await put(`videos/${video}`, fileBuffer, {
         access: 'public',
         token: token,
+        addRandomSuffix: false,
       });
 
       urls[video] = blob.url;

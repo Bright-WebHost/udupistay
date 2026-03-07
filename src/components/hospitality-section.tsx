@@ -36,8 +36,8 @@ export default function HospitalitySection() {
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover"
               >
-                <source src="/video/white.mp4" type="video/mp4" />
-                <source src="/video/hilltop.mp4" type="video/mp4" />
+                <source src="https://gu3khmwuvvy06mma.public.blob.vercel-storage.com/videos/white.mp4" type="video/mp4" />
+                <source src="https://gu3khmwuvvy06mma.public.blob.vercel-storage.com/videos/hilltop.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               {/* Subtle gradient for depth */}

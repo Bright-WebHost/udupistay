@@ -499,7 +499,7 @@ export default function AboutPage() {
 
       {/* ═══════════════ SERVICES & FACILITIES ═══════════════ */}
       <section className="py-16 sm:py-20 md:py-28 relative overflow-hidden">
-        <video className="absolute inset-0 w-full h-full object-cover z-0" src="/video/hilltop.mp4" autoPlay loop muted playsInline />
+        <video className="absolute inset-0 w-full h-full object-cover z-0" src="https://gu3khmwuvvy06mma.public.blob.vercel-storage.com/videos/hilltop.mp4" autoPlay loop muted playsInline />
         <div
           className="absolute inset-0 z-[5] bg-cover bg-center"
           style={{ backgroundImage: "url('/about-story.webp')" }}
