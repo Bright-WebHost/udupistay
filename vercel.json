@@ -3,7 +3,5 @@
     "deploymentEnabled": {
       "main": true
     }
-  },
-  "buildCommand": "git lfs fetch && git lfs checkout && npm run build",
-  "installCommand": "npm install"
+  }
 }
