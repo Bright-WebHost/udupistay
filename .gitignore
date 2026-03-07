@@ -28,6 +28,20 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# video files (too large for GitHub)
+/public/video/*.mp4
+
+# documentation files (optional)
+ANIMATION_GUIDE.md
+HERO_ANIMATION_GUIDE.md
+HERO_REDESIGN_SUMMARY.md
+HOMESTAYS_IMPLEMENTATION.md
+IMPLEMENTATION_SUMMARY.md
+LIQUID_ANIMATIONS_GUIDE.md
+LIQUID_EFFECTS_SUMMARY.md
+PREMIUM_CURSOR_GUIDE.md
+temp_check_image
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)

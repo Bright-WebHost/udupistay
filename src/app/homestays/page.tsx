@@ -202,7 +202,7 @@ export default function StaysPage() {
             src={homestays[0]?.image || "/stays-hero.jpg"}
             alt="Luxury Homestays"
             fill
-            className="object-cover scale-110"
+            className="object-cover"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
@@ -241,14 +241,30 @@ export default function StaysPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-            {homestays.map((stay, index) => (
+            {homestays.concat([
+              {
+                id: 'farmhouse',
+                title: 'FARM HOUSE',
+                subtitle: 'Day Visit Experience',
+                route: 'farmhouse',
+                image: '/farmhouse/1.webp',
+                description: 'Experience authentic farm life with animals and organic gardens',
+                longDescription: 'A countryside escape near Chalet La Bonne Vie',
+                amenities: ['Farm Animals', 'Organic Gardens'],
+                features: ['Day Visits'],
+                rooms: 0,
+                guests: 0,
+                bathrooms: 0,
+                highlights: ['Farm Animals'],
+                location: 'Udupi',
+                nearbyAttractions: ['Chalet'],
+              } as typeof homestays[0],
+            ]).map((stay, index) => (
               <Link 
                 href={`/${stay.route}`} 
                 key={stay.id}
                 data-index={index}
-                className={`fade-in-card delay-${Math.min(index % 3 + 1, 6)} ${visibleCards.has(index) ? 'visible' : ''} ${
-                  index === 6 ? 'md:col-span-2 lg:col-span-3' : ''
-                }`}
+                className={`fade-in-card delay-${Math.min(index % 3 + 1, 6)} ${visibleCards.has(index) ? 'visible' : ''}`}
               >
                 <div className="royal-corners diagonal-accent shine-sweep group h-full bg-white border-2 border-[#e5dfd6] transition-all duration-500 hover:border-[#849826] hover:shadow-2xl hover:shadow-[#849826]/20 hover:-translate-y-3 cursor-pointer relative">
                   
@@ -258,7 +274,7 @@ export default function StaysPage() {
                       src={stay.image}
                       alt={stay.title}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="object-cover transition-transform duration-700"
                     />
                     {/* Dark gradient for text readability */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />

@@ -7,6 +7,7 @@ import HomestaysHorizontalScroll from "@/components/homestays-horizontal-scroll"
 import TajStyleShowcase from "@/components/taj-style-showcase";
 import FacilitiesSection from "@/components/FacilitiesSection";
 import ViewpointOasisSection from "@/components/viewpoints";
+import FarmHouseSection from "@/components/farmhouse-section";
 import TestimonialsSection from "@/components/testimonial";
 
 export default function Home() {
@@ -28,6 +29,7 @@ export default function Home() {
         <TajStyleShowcase />
       </div>
 <ViewpointOasisSection/>
+<FarmHouseSection/>
 <TestimonialsSection/>
      
     </div>

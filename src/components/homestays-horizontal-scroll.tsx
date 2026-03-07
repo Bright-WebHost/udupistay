@@ -12,8 +12,8 @@ const homestays = [
   { id: 1, name: "WHITE HOUSE", image: "whitehouse/new/1.webp", rooms: 6, guests: 35, route: "/Whitehouse" },
   { id: 2, name: "GARDEN VILLA", image: "gradernVilla/new/1.webp", rooms: 5, guests: 20, route: "/GardenVilla" },
   { id: 3, name: "COTTAGE HOUSE", image: "Cottage/new/1.webp", rooms: 3, guests: 15, route: "/CottageHouse" },
-  { id: 4, name: "HILL TOP VILLA", image: "hilltop/new/_DSC3635.webp", rooms: 4, guests: 25, route: "/TopVilla" },
-  { id: 5, name: "SUNRISE HOME", image: "sunrise/new/_DSC3534.webp", rooms: 4, guests: 18, route: "/SunriseHome" },
+  { id: 4, name: "HILL TOP VILLA", image: "hilltop/new/1.webp", rooms: 4, guests: 25, route: "/TopVilla" },
+  { id: 5, name: "SUNRISE HOME", image: "sunrise/new/1.webp", rooms: 4, guests: 18, route: "/SunriseHome" },
   { id: 6, name: "CHALET LA BONNE VIE", image: "chalet/new/1.webp", rooms: 5, guests: 20, route: "/ChaletLabonne" },
   { id: 7, name: "VIEWPOINT OASIS", image: "view/new/1.webp", rooms: 4, guests: 22, route: "/ViewPoint" },
 ];
@@ -94,7 +94,7 @@ export default function HomestaysHorizontalScroll() {
         backgroundColor: "#f8f7f4",
       }}
     >
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]" />
+      <div className="absolute inset-0 bg-black/15 backdrop-blur-[1px]" />
 
       <div
         ref={containerRef}
@@ -146,7 +146,7 @@ export default function HomestaysHorizontalScroll() {
                   />
                 </div>
 
-                <div className="p-5 md:p-6 bg-black/40 backdrop-blur-md">
+                <div className="p-5 md:p-6 bg-black/25 backdrop-blur-md">
                   <h3 className="font-bold text-white mb-4">
                     {homestay.name}
                   </h3>

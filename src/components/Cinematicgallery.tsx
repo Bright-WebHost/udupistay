@@ -8,9 +8,10 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 interface CinematicGalleryProps {
   images: string[];
   title: string;
+  hideLabels?: boolean;
 }
 
-const ROOM_LABELS = ["Front View", "Hall", "Kitchen", "Bedroom", "Play Area"];
+const ROOM_LABELS = ["Front View", "Hall", "Bedroom", "Outdoor Area", "Play Area"];
 const N = ROOM_LABELS.length;
 
 gsap.registerPlugin(ScrollTrigger);
@@ -52,8 +53,8 @@ function ScrollRow({ items, direction, speed, cardW }: {
             position: "relative", borderRadius: 5,
             overflow: "hidden", background: "#c8c4b8",
           }}>
-            <Image src={item.src} alt="" fill
-              style={{ objectFit: "cover", filter: "brightness(0.75)" }} />
+            <Image src={item.src} alt="" fill quality={90}
+              style={{ objectFit: "cover" }} />
           </div>
         ))}
       </div>
@@ -62,7 +63,7 @@ function ScrollRow({ items, direction, speed, cardW }: {
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
-export default function CinematicGallery({ images, title }: CinematicGalleryProps) {
+export default function CinematicGallery({ images, title, hideLabels = true }: CinematicGalleryProps) {
   const outerRef    = useRef<HTMLDivElement>(null);
   const mobileContainerRef = useRef<HTMLDivElement>(null);
   const mobileTrackRef = useRef<HTMLDivElement>(null);
@@ -211,7 +212,11 @@ export default function CinematicGallery({ images, title }: CinematicGalleryProp
   const row2 = pad(all.filter((_, i) => i % 3 === 2).length ? all.filter((_, i) => i % 3 === 2) : all);
   const rowData = [row0, row1, row2];
 
-  const spotSrcs = ROOM_LABELS.map((_, i) => all[i % all.length].src);
+  const orderedSpotSrcs = all.slice(0, N).map((item) => item.src);
+  while (orderedSpotSrcs.length < N) {
+    orderedSpotSrcs.push(all[orderedSpotSrcs.length % all.length].src);
+  }
+  const spotSrcs = orderedSpotSrcs;
 
   // Card expand targets (centered, not full-screen)
   const TARGET = isMobile
@@ -235,7 +240,7 @@ export default function CinematicGallery({ images, title }: CinematicGalleryProp
           backgroundSize: 'cover',
         }}
       >
-        <div className="absolute inset-0 bg-black/35 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]" />
 
         <div
           ref={mobileContainerRef}
@@ -274,45 +279,49 @@ export default function CinematicGallery({ images, title }: CinematicGalleryProp
                       src={spotSrcs[index]}
                       alt={label}
                       fill
+                      quality={95}
                       className="object-cover transition-transform duration-500"
                       style={{
-                        filter: "brightness(0.78)",
                         transform: isCenter ? "scale(1.12)" : "scale(1)",
                       }}
                     />
                   </div>
 
-                  <div className="bg-black/45 p-3 backdrop-blur-md">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#d6e08a]">
-                      {String(index + 1).padStart(2, "0")} / {String(N).padStart(2, "0")}
-                    </p>
-                    <h3
-                      className="mt-1 text-[30px] leading-none text-white"
-                      style={{ fontFamily: "'Cormorant Garamond',Georgia,serif", fontWeight: 300 }}
-                    >
-                      {label}
-                    </h3>
-                    <p className="mt-1 text-[11px] uppercase tracking-[0.18em] text-white/75">
-                      Swipe to explore
-                    </p>
-                  </div>
+                  {!hideLabels && (
+                    <div className="bg-black/30 p-3 backdrop-blur-md">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#d6e08a]">
+                        {String(index + 1).padStart(2, "0")} / {String(N).padStart(2, "0")}
+                      </p>
+                      <h3
+                        className="mt-1 text-[30px] leading-none text-white"
+                        style={{ fontFamily: "'Cormorant Garamond',Georgia,serif", fontWeight: 300 }}
+                      >
+                        {label}
+                      </h3>
+                      <p className="mt-1 text-[11px] uppercase tracking-[0.18em] text-white/75">
+                        Swipe to explore
+                      </p>
+                    </div>
+                  )}
                 </div>
               );
             })}
           </div>
 
-          <div className="relative z-20 mt-5 flex justify-center gap-1.5">
-            {ROOM_LABELS.map((_, index) => (
-              <div
-                key={index}
-                className="h-[4px] rounded-full transition-all duration-300"
-                style={{
-                  width: index === mobileCenterCard ? 18 : 5,
-                  background: index === mobileCenterCard ? "#849826" : "rgba(255,255,255,0.32)",
-                }}
-              />
+          {!hideLabels && (
+            <div className="relative z-20 mt-5 flex justify-center gap-1.5">
+              {ROOM_LABELS.map((_, index) => (
+                <div
+                  key={index}
+                  className="h-[4px] rounded-full transition-all duration-300"
+                  style={{
+                    width: index === mobileCenterCard ? 18 : 5,
+                    background: index === mobileCenterCard ? "#849826" : "rgba(255,255,255,0.32)",
+                  }}
+                />
             ))}
-          </div>
+            </div>
+          )}
         </div>
       </section>
     );
@@ -454,26 +463,21 @@ export default function CinematicGallery({ images, title }: CinematicGalleryProp
                   src={spotSrcs[ri]}
                   alt={label}
                   fill
+                  quality={95}
                   style={{
                     objectFit: "cover",
-                    filter: "brightness(0.67) saturate(1.05)",
                   }}
                   priority
                 />
 
-                {/* Bottom gradient */}
-                <div style={{
-                  position: "absolute", bottom: 0, left: 0, right: 0, height: "62%",
-                  background: "linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,.18) 65%, transparent 100%)",
-                  pointerEvents: "none",
-                }} />
-
-                {/* Top vignette */}
-                <div style={{
-                  position: "absolute", top: 0, left: 0, right: 0, height: "28%",
-                  background: "linear-gradient(to bottom, rgba(0,0,0,.48) 0%, transparent 100%)",
-                  pointerEvents: "none",
-                }} />
+                {/* Bottom gradient - reduced for better image visibility */}
+                {!hideLabels && (
+                  <div style={{
+                    position: "absolute", bottom: 0, left: 0, right: 0, height: "40%",
+                    background: "linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.1) 65%, transparent 100%)",
+                    pointerEvents: "none",
+                  }} />
+                )}
 
                 {/* Olive top accent */}
                 <div style={{
@@ -483,90 +487,96 @@ export default function CinematicGallery({ images, title }: CinematicGalleryProp
                 }} />
 
                 {/* Room label */}
-                <div style={{
-                  position: "absolute",
-                  bottom: isMobile ? "6%" : "9%",
-                  left:   isMobile ? "5%" : "6%",
-                  opacity: isActive ? 1 : 0,
-                  transform: isActive ? "translateY(0)" : "translateY(18px)",
-                  transition: isActive
-                    ? "opacity 0.45s ease 0.35s, transform 0.45s cubic-bezier(0.22,1,0.36,1) 0.35s"
-                    : "opacity 0.2s ease, transform 0.2s ease",
-                  pointerEvents: "none",
-                }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: isMobile ? 5 : 10 }}>
-                    <div style={{ width: isMobile ? 14 : 22, height: 1, background: "#849826" }} />
-                    <span style={{
-                      fontSize: isMobile ? 8 : 9, letterSpacing: "0.3em",
-                      textTransform: "uppercase", color: "#849826",
-                      fontFamily: "ui-sans-serif,system-ui,sans-serif", fontWeight: 700,
-                    }}>
-                      {String(ri + 1).padStart(2, "0")} / {String(N).padStart(2, "0")}
-                    </span>
-                  </div>
+                {!hideLabels && (
                   <div style={{
-                    fontFamily: "'Cormorant Garamond',Georgia,serif",
-                    fontSize: isMobile
-                      ? "clamp(28px,9vw,44px)"
-                      : isTablet
-                        ? "clamp(30px,5.5vw,50px)"
-                        : "clamp(34px,4.5vw,58px)",
-                    fontWeight: 300, color: "#f5f0e0",
-                    lineHeight: 0.95, letterSpacing: "-0.015em",
-                    textShadow: "0 2px 36px rgba(0,0,0,.6)",
+                    position: "absolute",
+                    bottom: isMobile ? "6%" : "9%",
+                    left:   isMobile ? "5%" : "6%",
+                    opacity: isActive ? 1 : 0,
+                    transform: isActive ? "translateY(0)" : "translateY(18px)",
+                    transition: isActive
+                      ? "opacity 0.45s ease 0.35s, transform 0.45s cubic-bezier(0.22,1,0.36,1) 0.35s"
+                      : "opacity 0.2s ease, transform 0.2s ease",
+                    pointerEvents: "none",
                   }}>
-                    {label}
+                    <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: isMobile ? 5 : 10 }}>
+                      <div style={{ width: isMobile ? 14 : 22, height: 1, background: "#849826" }} />
+                      <span style={{
+                        fontSize: isMobile ? 8 : 9, letterSpacing: "0.3em",
+                        textTransform: "uppercase", color: "#849826",
+                        fontFamily: "ui-sans-serif,system-ui,sans-serif", fontWeight: 700,
+                      }}>
+                        {String(ri + 1).padStart(2, "0")} / {String(N).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <div style={{
+                      fontFamily: "'Cormorant Garamond',Georgia,serif",
+                      fontSize: isMobile
+                        ? "clamp(28px,9vw,44px)"
+                        : isTablet
+                          ? "clamp(30px,5.5vw,50px)"
+                          : "clamp(34px,4.5vw,58px)",
+                      fontWeight: 300, color: "#f5f0e0",
+                      lineHeight: 0.95, letterSpacing: "-0.015em",
+                      textShadow: "0 2px 36px rgba(0,0,0,.6)",
+                    }}>
+                      {label}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Side dashes */}
-                <div style={{
-                  position: "absolute",
-                  top: "50%",
-                  right: isMobile ? "4%" : "5%",
-                  transform: "translateY(-50%)",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: isMobile ? 4 : 6,
-                  opacity: isActive ? 0.55 : 0,
-                  transition: "opacity 0.4s ease 0.4s",
-                  pointerEvents: "none",
-                }}>
-                  {ROOM_LABELS.map((_, di) => (
-                    <div key={di} style={{
-                      height: isMobile ? 1.5 : 2,
-                      width: di === ri ? (isMobile ? 16 : 24) : (isMobile ? 4 : 5),
-                      borderRadius: 1,
-                      background: di === ri ? "#849826" : "rgba(255,255,255,.22)",
-                    }} />
-                  ))}
-                </div>
+                {!hideLabels && (
+                  <div style={{
+                    position: "absolute",
+                    top: "50%",
+                    right: isMobile ? "4%" : "5%",
+                    transform: "translateY(-50%)",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: isMobile ? 4 : 6,
+                    opacity: isActive ? 0.55 : 0,
+                    transition: "opacity 0.4s ease 0.4s",
+                    pointerEvents: "none",
+                  }}>
+                    {ROOM_LABELS.map((_, di) => (
+                      <div key={di} style={{
+                        height: isMobile ? 1.5 : 2,
+                        width: di === ri ? (isMobile ? 16 : 24) : (isMobile ? 4 : 5),
+                        borderRadius: 1,
+                        background: di === ri ? "#849826" : "rgba(255,255,255,.22)",
+                      }} />
+                    ))}
+                  </div>
+                )}
               </div>
             );
           })}
 
           {/* Progress dots */}
-          <div style={{
-            position: "absolute", bottom: isMobile ? 10 : 18, left: "50%",
-            transform: "translateX(-50%)",
-            display: "flex", gap: isMobile ? 5 : 6, zIndex: 50,
-          }}>
-            {ROOM_LABELS.map((_, di) => (
-              <div key={di} style={{
-                height: isMobile ? 4 : 5,
-                width: di === activeCard
-                  ? (isMobile ? 16 : 22)
-                  : (isMobile ? 4 : 5),
-                borderRadius: 3,
-                background: di === activeCard
-                  ? "#849826"
-                  : di < activeCard
-                    ? "rgba(132,152,38,.4)"
-                    : "rgba(0,0,0,.14)",
-                transition: "width 0.4s cubic-bezier(0.34,1.6,.64,1), background 0.3s ease",
+          {!hideLabels && (
+            <div style={{
+              position: "absolute", bottom: isMobile ? 10 : 18, left: "50%",
+              transform: "translateX(-50%)",
+              display: "flex", gap: isMobile ? 5 : 6, zIndex: 50,
+            }}>
+              {ROOM_LABELS.map((_, di) => (
+                <div key={di} style={{
+                  height: isMobile ? 4 : 5,
+                  width: di === activeCard
+                    ? (isMobile ? 16 : 22)
+                    : (isMobile ? 4 : 5),
+                  borderRadius: 3,
+                  background: di === activeCard
+                    ? "#849826"
+                    : di < activeCard
+                      ? "rgba(132,152,38,.4)"
+                      : "rgba(0,0,0,.14)",
+                  transition: "width 0.4s cubic-bezier(0.34,1.6,.64,1), background 0.3s ease",
               }} />
             ))}
-          </div>
+            </div>
+          )}
 
           {/* Bottom stripe */}
           <div style={{
@@ -578,3 +588,6 @@ export default function CinematicGallery({ images, title }: CinematicGalleryProp
     </>
   );
 }
+
+
+

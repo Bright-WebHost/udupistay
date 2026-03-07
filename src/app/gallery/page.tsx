@@ -19,11 +19,11 @@ const homestayImages: Record<string, string[]> = {
     "/Cottage/new/_DSC3692.webp",
   ],
   topvilla:      [
-    "/hilltop/new/_DSC3635.webp",
+    "/hilltop/new/1.webp",
     "/hilltop/new/_DSC3643.webp",
   ],
   sunrisehome:   [
-    "/sunrise/new/_DSC3534.webp",
+    "/sunrise/new/1.webp",
     "/sunrise/new/_DSC3596.webp",
     "/sunrise/new/_DSC3602.webp",
     "/sunrise/new/_DSC3603.webp",
@@ -37,6 +37,7 @@ const homestayImages: Record<string, string[]> = {
     '/chalet/new/scene2.webp', '/chalet/new/scene3.webp'
   ],
   viewpoint:     Array.from({ length: 10 }, (_, i) => `/view/new/${i + 1}.webp`),
+  farmhouse:     ["/farmhouse/1.webp", "/farmhouse/11.webp", "/farmhouse/2.webp", "/farmhouse/9.webp", "/farmhouse/3.webp", "/farmhouse/4.webp", "/farmhouse/5.webp", "/farmhouse/6.webp", "/farmhouse/7.webp"],
 };
 
 const routeKey = (r: string) => r.toLowerCase().replace(/\s+/g, "");
@@ -158,27 +159,7 @@ const CSS = `
 .ms-intro-p {
   font-family: var(--sans); font-size: clamp(13px,1.3vw,14.5px);
   font-weight: 300; color: var(--fog); line-height: 1.8;
-  margin-top: 0.85rem; max-width: 400px;
-}
-.ms-stats {
-  display: flex; flex-direction: column; gap: 1.25rem;
-  padding-left: 0;
-}
-@media (min-width: 680px) {
-  .ms-stats { padding-left: clamp(2rem,4vw,3rem); border-left: 1px solid var(--sand); }
-}
-.ms-stat { display: flex; align-items: baseline; gap: 0.85rem; }
-.ms-stat-n {
-  font-family: var(--serif); font-size: clamp(36px,5vw,54px);
-  font-weight: 700; color: var(--gold2); line-height: 1;
-}
-.ms-stat-l {
-  font-family: var(--sans); font-size: 9px; font-weight: 600;
-  letter-spacing: 0.28em; text-transform: uppercase; color: var(--bark);
-}
-.ms-stat-d {
-  font-family: var(--sans); font-size: 11px; font-weight: 300;
-  color: var(--fog); margin-top: 2px;
+  margin-top: 0.85rem; max-width: 600px;
 }
 
 /* ═══ FILTER — BOLD ═══ */
@@ -788,7 +769,7 @@ export default function GalleryPage() {
       {/* ══ HERO ══ */}
       <section className="ms-hero">
         <div className="ms-hero-bg" style={{ transform: `translateY(${scrollY * 0.38}px)` }}>
-          <Image src="/about-hero.webp" alt="Gallery" fill className="object-cover scale-110" sizes="100vw" priority />
+          <Image src="/about-hero.webp" alt="Gallery" fill className="object-cover" sizes="100vw" priority />
           <div className="ms-hero-ov" />
           <div className="ms-hero-grain" />
         </div>
@@ -812,7 +793,7 @@ export default function GalleryPage() {
         data-animate="intro"
         style={{ opacity: visible.has("intro") ? 1 : 0, transition: "opacity 0.9s" }}
       >
-        <div className="ms-intro-left">
+        <div className="ms-intro-left" style={{ maxWidth: '100%' }}>
           <div className="ms-eyebrow">Explore Our Estates</div>
           <h2 className="ms-intro-h2">
             A Journey Through<br /><em>Udupi&apos;s Finest Homes</em>
@@ -821,21 +802,6 @@ export default function GalleryPage() {
             Click any property to explore its full visual story — every photograph
             handpicked to capture the essence of each unique retreat.
           </p>
-        </div>
-        <div className="ms-stats">
-          {[
-            { n: homestays.length, label: "Properties", d: "Handpicked retreats" },
-            { n: homestays.reduce((a, h) => a + getImages(h).length, 0), label: "Photographs", d: "Curated images" },
-            { n: "7+", label: "Years", d: "Of hospitality" },
-          ].map(({ n, label, d }) => (
-            <div className="ms-stat" key={label}>
-              <div className="ms-stat-n">{n}</div>
-              <div className="ms-stat-info">
-                <div className="ms-stat-l">{label}</div>
-                <div className="ms-stat-d">{d}</div>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 

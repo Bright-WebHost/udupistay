@@ -97,7 +97,7 @@ export default function HomestaysStickyScroll() {
                     src={homestay.image}
                     alt={homestay.alt}
                     fill
-                    className="object-cover hover:scale-110 transition-transform duration-700"
+                    className="object-cover transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, 600px"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -199,7 +199,7 @@ export default function HomestaysStickyScroll() {
                       src={homestay.image}
                       alt={homestay.alt}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="object-cover transition-transform duration-700"
                       sizes="100vw"
                       priority={index === 0}
                     />

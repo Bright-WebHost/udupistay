@@ -105,7 +105,7 @@ function PolaroidCard({
 }) {
   const [landed, setLanded] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const countTarget = meta.key === "price" ? Math.round(value / 1000) : value;
+  const countTarget = value;
   const count = useCountUp(countTarget, 1100, landed);
 
   useEffect(() => {
@@ -114,7 +114,7 @@ function PolaroidCard({
     return () => clearTimeout(t);
   }, [isVisible, meta.delay]);
 
-  const displayValue = meta.key === "price" ? `₹${count}K` : `${count}`;
+  const displayValue = `${count}`;
 
   return (
     <div

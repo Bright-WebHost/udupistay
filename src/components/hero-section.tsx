@@ -16,8 +16,8 @@ export default function HeroSection() {
     { img: "/whitehouse/new/1.webp", title: "White House" },
     { img: "/gradernVilla/new/1.webp", title: "Garden Villa" },
     { img: "/Cottage/new/1.webp", title: "Cottage House" },
-    { img: "/hilltop/new/_DSC3635.webp", title: "Hilltop Villa" },
-    { img: "/sunrise/new/_DSC3534.webp", title: "Sunrise Home" },
+    { img: "/hilltop/new/1.webp", title: "Hilltop Villa" },
+    { img: "/sunrise/new/1.webp", title: "Sunrise Home" },
     { img: "/chalet/new/1.webp", title: "Chalet La Bonne Vie" },
     { img: "/view/new/1.webp", title: "Viewpoint" },
   ];
@@ -43,7 +43,7 @@ export default function HeroSection() {
         backgroundPosition: "center",
       }}
     >
-      <div className="absolute inset-0 bg-black/35" />
+      <div className="absolute inset-0 bg-black/20" />
       <div className="relative z-10 px-4 sm:px-4 md:px-6 xxxl:px-[50px] xxl:px-[30px] h-full flex flex-col justify-end">
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-end justify-between pb-4 md:pb-8 h-full">
           {isMobile ? (
@@ -88,7 +88,8 @@ export default function HeroSection() {
                                 src={facility.img}
                                 alt={facility.title}
                                 fill
-                                className="object-cover brightness-110 contrast-110 scale-105"
+                                quality={90}
+                                className="object-cover brightness-110 contrast-110"
                               />
                             </div>
                             <p className="text-white text-center text-[11px] font-semibold tracking-wide leading-tight mt-1.5">
@@ -126,7 +127,7 @@ export default function HeroSection() {
                 <h1
                   className={`${!isMobile ? "animate-fade-up-1" : ""} text-white text-left text-[26px] sm:text-[34px] md:text-[44px] lg:text-[56px] leading-tight font-serif font-semibold uppercase tracking-[0.02em] mb-[8px] md:mb-[10px]`}
                 >
-                  Premium Homestays in Udupi, Karnataka
+                  Premium Homestays Experience with Morden Comfort
                 </h1>
                 {/* Description */}
                 <p
@@ -192,7 +193,8 @@ export default function HeroSection() {
                               src={facility.img}
                               alt={facility.title}
                               fill
-                              className="object-cover brightness-110 contrast-110 scale-110"
+                              quality={90}
+                              className="object-cover brightness-110 contrast-110"
                             />
                           </div>
                           <p className="text-white text-center text-[13px] font-semibold tracking-wide mb-0 pb-0 mt-1">

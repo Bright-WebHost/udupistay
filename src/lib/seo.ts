@@ -51,7 +51,6 @@ export const getHomestaySchema = (homestay: {
       addressRegion: 'Karnataka',
       addressCountry: 'IN',
     },
-    priceRange: '₹',
     telephone: '+91 89712 20576',
     amenityFeature: [
       { '@type': 'LocationFeatureSpecification', name: 'WiFi' },
@@ -106,7 +105,6 @@ export const localBusinessSchema = {
   },
   telephone: '+91 89712 20576',
   url: 'https://udupistay.com',
-  priceRange: '₹',
   areaServed: [
     'Udupi',
     'Manipal',

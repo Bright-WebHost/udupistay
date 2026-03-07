@@ -19,13 +19,12 @@ import CinematicGallery from "@/components/Cinematicgallery";
 
 // All image/video/meta maps use ROUTE (lowercased) as key — never id
 const homestayVideos: Record<string, string> = {
-  whitehouse:    "/video/whitehouse.mp4",
-  gardenvilla:   "/video/gardenvilla.mp4",
-  cottagehouse:  "/video/cottagehouse.mp4",
-  topvilla:      "/video/hilltopvilla.mp4",
-  sunrisehome:   "/video/sunrisehome.mp4",
-  chaletlabonne: "/video/chaletlabonne.mp4",
-  viewpoint:     "/video/viewpointoasis.mp4",
+  whitehouse:    "/video/white.mp4",
+  gardenvilla:   "/video/garden.mp4",
+  cottagehouse:  "/video/cottage.mp4",
+  topvilla:      "/video/hilltop.mp4",
+  sunrisehome:   "/video/sunrise.mp4",
+  chaletlabonne: "/video/chalet.mp4",
 };
 
 const homestayImages: Record<string, string[]> = {
@@ -37,21 +36,29 @@ const homestayImages: Record<string, string[]> = {
   gardenvilla:   Array.from({ length: 11 }, (_, i) => `/gradernVilla/new/${i + 1}.webp`),
   cottagehouse:  [
     "/Cottage/new/1.webp",
-    "/Cottage/new/_DSC3682.webp",
-    "/Cottage/new/_DSC3691.webp",
-    "/Cottage/new/_DSC3692.webp",
+    "/Cottage/new/2.webp",
+    "/Cottage/new/3.webp",
+    "/Cottage/new/4.webp",
+    "/Cottage/new/5.webp",
+    "/Cottage/new/6.webp",
+    "/Cottage/new/7.webp",
+    "/Cottage/new/9.webp",
   ],
   topvilla:      [
-    "/hilltop/new/_DSC3635.webp",
-    "/hilltop/new/_DSC3643.webp",
+    "/hilltop/new/1.webp",
+    "/hilltop/new/2.webp",
+    "/hilltop/new/3.webp",
+    "/hilltop/new/4.webp",
+    "/hilltop/new/5.webp",
+    "/hilltop/new/6.webp",
   ],
   sunrisehome:   [
-    "/sunrise/new/_DSC3534.webp",
-    "/sunrise/new/_DSC3596.webp",
-    "/sunrise/new/_DSC3602.webp",
-    "/sunrise/new/_DSC3603.webp",
-    "/sunrise/new/_DSC3605.webp",
-    "/sunrise/new/_DSC3607.webp",
+    "/sunrise/new/1.webp",
+    "/sunrise/new/2.webp",
+    "/sunrise/new/3.webp",
+    "/sunrise/new/4.webp",
+    "/sunrise/new/5.webp",
+    "/sunrise/new/6.webp",
   ],
   chaletlabonne: [
     '/chalet/new/1.webp', '/chalet/new/2.webp', '/chalet/new/3.webp',
@@ -62,14 +69,14 @@ const homestayImages: Record<string, string[]> = {
   viewpoint:     Array.from({ length: 10 }, (_, i) => `/view/new/${i + 1}.webp`),
 };
 
-const homestayMeta: Record<string, { price: number; tags: string[] }> = {
-  whitehouse:    { price: 20000, tags: ["Near Malpe Beach",  "Large Groups",    "Modern Amenities"] },
-  gardenvilla:   { price: 18000, tags: ["Spacious Bedrooms", "Family-Friendly", "Fully Furnished"]  },
-  cottagehouse:  { price: 12000, tags: ["Air-Conditioned",   "Fully Furnished", "Family-Friendly"]  },
-  topvilla:      { price: 13500, tags: ["Hill View",         "Scenic Location", "Air-Conditioned"]  },
-  sunrisehome:   { price: 10000, tags: ["Sunrise View",      "Cozy Interiors",  "Budget Friendly"]  },
-  chaletlabonne: { price: 8500,  tags: ["Bird Sanctuary",    "Farm Access",     "Nature Immersion"] },
-  viewpoint:     { price: 15000, tags: ["Jacuzzi",           "BBQ Area",        "Scenic Views"]     },
+const homestayMeta: Record<string, { tags: string[] }> = {
+  whitehouse:    { tags: ["Near Malpe Beach",  "Large Groups",    "Modern Amenities"] },
+  gardenvilla:   { tags: ["Spacious Bedrooms", "Family-Friendly", "Fully Furnished"]  },
+  cottagehouse:  { tags: ["Air-Conditioned",   "Fully Furnished", "Family-Friendly"]  },
+  topvilla:      { tags: ["Hill View",         "Scenic Location", "Air-Conditioned"]  },
+  sunrisehome:   { tags: ["Sunrise View",      "Cozy Interiors",  "Budget Friendly"]  },
+  chaletlabonne: { tags: ["Bird Sanctuary",    "Farm Access",     "Nature Immersion"] },
+  viewpoint:     { tags: ["Jacuzzi",           "BBQ Area",        "Scenic Views"]     },
 };
 
 // Lookup key: lowercase the route string, strip spaces
@@ -101,7 +108,8 @@ export default function HomestayPage() {
   const rk        = routeKey(homestay.route);
   const images    = homestayImages[rk] || [];
   const heroImage = images[0] || "/last.avif";
-  const video     = homestayVideos[rk] || "/video/homestay-showcase.mp4";
+  const isViewpoint = homestay.route === "ViewPoint";
+  const video     = isViewpoint ? "/video/viewpoint.mp4" : homestayVideos[rk];
 
   return (
     <div className="min-h-screen bg-[#fbfaf7]">
@@ -124,7 +132,6 @@ export default function HomestayPage() {
             },
             telephone: "+91 89712 20576",
             url: `https://udupistay.com/${homestay.route}`,
-            priceRange: "₹",
             numberOfBedrooms: homestay.rooms,
             numberOfBathroomsNumber: homestay.bathrooms,
             occupancy: { "@type": "QuantitativeValue", maxValue: homestay.guests },
@@ -141,8 +148,8 @@ export default function HomestayPage() {
         <div className="relative h-full w-full">
           {heroImage && (
             <>
-              <Image src={heroImage} alt={homestay.title} fill className="object-cover" priority />
-              <div className="absolute inset-0 bg-black/35" />
+              <Image src={heroImage} alt={homestay.title} fill className="object-cover" priority quality={95} />
+              <div className="absolute inset-0 bg-black/20" />
             </>
           )}
           <Link
@@ -176,25 +183,24 @@ export default function HomestayPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
 
             {/* Media */}
-            <div className="lg:col-span-5 flex flex-col gap-3 md:gap-4">
-              <div className="relative w-full overflow-hidden shadow-lg rounded-xl" style={{ height: "clamp(200px, 30vw, 320px)" }}>
-                <video
-                  className="w-full h-full object-cover block"
-                  src={video}
-                  poster={images[1] || images[0] || "/last.avif"}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                />
+            {video && (
+              <div className="lg:col-span-5 flex justify-center">
+                <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] overflow-hidden shadow-2xl rounded-2xl aspect-[9/16]">
+                  <video
+                    className="w-full h-full object-cover block"
+                    src={video}
+                    poster={images[1] || images[0] || "/last.avif"}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                </div>
               </div>
-              <div className="relative w-full overflow-hidden shadow-lg rounded-xl" style={{ height: "clamp(160px, 22vw, 240px)" }}>
-                <Image src={images[2] || images[0] || "/last.avif"} alt={`${homestay.title} amenities`} fill quality={95} className="object-cover" />
-              </div>
-            </div>
+            )}
 
             {/* Text */}
-            <div className="lg:col-span-7 flex flex-col justify-center lg:pl-8">
+            <div className={`${video ? 'lg:col-span-7' : 'lg:col-span-12'} flex flex-col justify-center lg:pl-8`}>
               <div className="flex items-center gap-2 mb-3">
                 <svg className="w-5 h-5 text-[#849826] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
@@ -223,7 +229,7 @@ export default function HomestayPage() {
                 ))}
               </div>
 
-              {/* Price + CTA */}
+              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/contact"
@@ -298,19 +304,10 @@ export default function HomestayPage() {
                           src={cardImage}
                           alt={`${h.title} - Homestay in Udupi`}
                           fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-700"
+                          quality={90}
+                          className="object-cover transition-transform duration-700"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
-
-                        {/* Price badge */}
-                        {hMeta && (
-                          <div className="absolute top-3 right-3 bg-[#849826] text-white px-2.5 py-1.5 md:px-3 md:py-2 rounded-xl text-center leading-tight shadow-lg">
-                            <div className="text-xs md:text-sm font-bold">
-                              &#x20B9;{hMeta.price.toLocaleString("en-IN")}
-                            </div>
-                            <div className="text-[8px] md:text-[9px] uppercase tracking-widest opacity-90">Per Night</div>
-                          </div>
-                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent" />
 
                         {/* Stats bar */}
                         <div className="absolute bottom-0 left-0 right-0 bg-[#849826]/90 backdrop-blur-sm px-3 md:px-4 py-2 md:py-2.5 flex items-center justify-between text-white">

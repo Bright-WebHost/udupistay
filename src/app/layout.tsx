@@ -83,7 +83,6 @@ const organizationSchema = {
     "addressCountry": "IN",
   },
   "areaServed": ["Udupi", "Malpe", "Manipal", "Karnataka"],
-  "priceRange": "₹₹",
   "amenityFeature": [
     { "@type": "LocationFeatureSpecification", "name": "Air Conditioning", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Family Friendly", "value": true },

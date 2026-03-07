@@ -6,7 +6,7 @@ import Image from 'next/image';
 const thumbnails = [
   { id: 1, image: '/view/new/2.webp', alt: 'Jacuzzi Area' },
   { id: 2, image: '/view/new/4.webp', alt: 'BBQ Area' },
-  { id: 3, image: '/view/new/V4.webp', alt: 'Rooftop View' },
+  { id: 3, image: '/view/new/5.webp', alt: 'Rooftop View' },
   { id: 4, image: '/view/new/3.webp', alt: 'Garden Area' },
 ];
 
@@ -14,7 +14,7 @@ const mainImages = [
   { id: 1, image: '/view/new/2.webp', alt: 'Viewpoint Oasis Main 1' },
   { id: 2, image: '/view/new/4.webp', alt: 'Viewpoint Oasis Main 2' },
   { id: 3, image: '/view/new/3.webp', alt: 'Viewpoint Oasis Main 3' },
-  { id: 4, image: '/view/new/V4.webp', alt: 'Viewpoint Oasis Main 4' },
+  { id: 4, image: '/view/new/5.webp', alt: 'Viewpoint Oasis Main 4' },
 ];
 
 export default function ViewpointOasisSection() {

@@ -380,7 +380,7 @@ export default function AboutPage() {
             transform: `translateY(${scrollY * 0.5}px)`,
           }}
         >
-          <img src="/about-hero.webp" alt="Udupi Homestays" className="w-full h-full object-cover scale-110" />
+          <img src="/about-hero.webp" alt="Udupi Homestays" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         </div>
         <div className="relative z-10 text-center text-white px-6 max-w-5xl mx-auto fade-up visible">
@@ -499,7 +499,7 @@ export default function AboutPage() {
 
       {/* ═══════════════ SERVICES & FACILITIES ═══════════════ */}
       <section className="py-16 sm:py-20 md:py-28 relative overflow-hidden">
-        <video className="absolute inset-0 w-full h-full object-cover z-0" src="/video/topvilla.mp4" autoPlay loop muted playsInline />
+        <video className="absolute inset-0 w-full h-full object-cover z-0" src="/video/hilltop.mp4" autoPlay loop muted playsInline />
         <div
           className="absolute inset-0 z-[5] bg-cover bg-center"
           style={{ backgroundImage: "url('/about-story.webp')" }}
@@ -584,7 +584,7 @@ export default function AboutPage() {
                   <img 
                     src={card.image}
                     alt={card.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                   <div className="absolute top-3 right-3 sm:top-4 sm:right-4 lg:top-6 lg:right-6 w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 rounded-full bg-[#849826] flex items-center justify-center shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 group-hover:shadow-[0_0_30px_rgba(132,152,38,0.6)]">

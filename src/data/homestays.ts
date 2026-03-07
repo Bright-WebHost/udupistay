@@ -152,7 +152,7 @@ export const homestays: Homestay[] = [
     title: "HILL TOP VILLA",
     subtitle: "Air-Conditioned 3BHK Villa",
     route: "TopVilla",
-    image: "/hilltop/new/_DSC3635.webp",
+    image: "/hilltop/new/1.webp",
     description: "Scenic AC 3BHK villa near Udupi and Manipal, accommodating up to 10 guests with 3 bathrooms and panoramic views.",
     longDescription: "Hill Top Villa offers a peaceful, elevated stay experience with panoramic views and modern comforts. This AC homestay in Udupi, Karnataka features 3 bedrooms and 3 bathrooms, well-suited for families and couples who want a calm weekend getaway near Manipal University while staying close to key Udupi attractions.",
     amenities: [
@@ -195,7 +195,7 @@ export const homestays: Homestay[] = [
     title: "SUNRISE HOME",
     subtitle: "3BHK Brick House",
     route: "SunriseHome",
-    image: "/sunrise/new/_DSC3534.webp",
+    image: "/sunrise/new/1.webp",
     description: "Affordable 2BHK family homestay in Udupi, accommodating up to 6 guests with 3 bathrooms and cozy interiors.",
     longDescription: "Sunrise Home is an affordable family homestay in Udupi, Karnataka with 2 bedrooms and 3 bathrooms for guests who prefer a private, quiet setting. With comfortable rooms and practical amenities, it is ideal for travelers searching for a budget-friendly Udupi homestay near Manipal and local dining spots.",
     amenities: [

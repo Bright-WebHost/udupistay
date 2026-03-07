@@ -45,7 +45,7 @@ export default function ContactPage() {
             src="/about-hero.webp"
             alt="Contact Udupi Homestays"
             fill
-            className="object-cover scale-105"
+            className="object-cover"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/55 to-black/75" />
