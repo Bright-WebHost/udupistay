@@ -138,7 +138,7 @@ export default function SiteHeader() {
             width={180}
             height={80}
             priority
-            className="h-14 sm:h-12 lg:h-10 xl:h-12 2xl:h-14 w-auto block transition-all duration-500"
+            className="h-16 sm:h-12 lg:h-10 xl:h-12 2xl:h-14 w-auto block transition-all duration-500"
           />
         </Link>
 
@@ -195,15 +195,15 @@ export default function SiteHeader() {
         </nav>
 
         {/* RIGHT ACTIONS - All screens */}
-        <div className="flex items-center h-full min-h-0 gap-1 sm:gap-2 md:gap-3 lg:gap-3 xl:gap-4 2xl:gap-6 shrink-0">
-          {/* Logos */}
+        <div className="flex items-center h-full min-h-0 gap-0.5 sm:gap-1.5 md:gap-2 lg:gap-3 xl:gap-4 2xl:gap-6 shrink-0 mr-2 sm:mr-0">
+          {/* Logos - Udupi bigger, others smaller */}
           <Image
             src={isOverWhite ? "/udupi-logo.svg" : "/udupi-logo_white_text.svg"}
             alt="Udupi Logo"
             width={220}
             height={100}
             priority
-            className="h-12 sm:h-11 md:h-10 lg:h-14 xl:h-16 2xl:h-20 w-auto object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)]"
+            className="h-14 sm:h-12 md:h-10 lg:h-14 xl:h-16 2xl:h-20 w-auto object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)]"
           />
           <Image
             src={isOverWhite ? "/karnatka-logo.png" : "/karnataka_logo_white_text.png"}
@@ -211,7 +211,7 @@ export default function SiteHeader() {
             width={220}
             height={100}
             priority
-            className="h-12 sm:h-11 md:h-10 lg:h-14 xl:h-16 2xl:h-20 w-auto object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)]"
+            className="h-8 sm:h-9 md:h-8 lg:h-12 xl:h-14 2xl:h-18 w-auto object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)]"
           />
 
           {/* Phone - Hidden on mobile, shown on lg+ */}
@@ -231,13 +231,17 @@ export default function SiteHeader() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden flex items-center justify-center h-12 w-12 rounded-full backdrop-blur-xl transition-all duration-500 bg-white/10 border border-white/15"
+          className="lg:hidden flex items-center justify-center h-12 w-12 rounded-full backdrop-blur-md transition-all duration-500 border-2 shrink-0"
+          style={{
+            backgroundColor: isOverWhite ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.15)',
+            borderColor: isOverWhite ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.25)',
+          }}
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? (
-            <X size={24} className={isOverWhite ? "text-gray-900!" : "text-white!"} />
+            <X size={24} className={isOverWhite ? "text-gray-900" : "text-white"} />
           ) : (
-            <Menu size={24} className={isOverWhite ? "text-gray-900!" : "text-white!"} />
+            <Menu size={24} className={isOverWhite ? "text-gray-900" : "text-white"} />
           )}
         </button>
       </div>
