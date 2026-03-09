@@ -166,13 +166,21 @@ export default function SiteHeader() {
                 
                 {/* Dropdown Menu */}
                 {dropdownOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-56 bg-white/95 backdrop-blur-xl rounded-xl shadow-2xl border border-white/20 overflow-hidden z-50">
+                  <div className={`absolute top-full left-0 mt-2 w-56 backdrop-blur-xl rounded-xl shadow-2xl border overflow-hidden z-50 ${
+                    isOverWhite 
+                      ? 'bg-white/98 border-white/40' 
+                      : 'bg-black/85 border-white/20'
+                  }`}>
                     {homestayMenuItems.map((item) => (
                       <Link
                         key={item.id}
                         href={item.href}
-                        className="block px-4 py-3 text-sm font-medium text-gray-800 hover:bg-[#849826] hover:text-white transition-colors duration-200"
-                        onClick={() => setDropdownOpen(false)}
+                        className={`block px-4 py-3 text-sm font-medium transition-colors duration-200 ${
+                          isOverWhite
+                            ? 'text-gray-800 hover:bg-[#849826] hover:text-white'
+                            : 'text-white/90 hover:bg-[#849826] hover:text-white'
+                        }`}
+                        onClick={() => setDropdownOpen(false)}  
                       >
                         {item.title}
                       </Link>
