@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { Car, Wifi, Sparkles, Key, Home, Waves, Phone } from 'lucide-react';
 import Link from 'next/link';
 
@@ -100,7 +100,7 @@ export function PriceTag({ active }: { active: boolean }) {
       {active && (
         <motion.div
           key="price-tag-3d"
-          className="absolute top-2 right-2 sm:top-0 sm:right-3 md:right-6 lg:right-8 xl:right-16 z-30"
+          className="absolute top-4 right-1 sm:top-2 sm:right-3 md:right-6 lg:right-8 xl:right-16 z-40"
           style={{ transformOrigin: 'top center' }}
           initial={{
             y: -140,
@@ -159,10 +159,10 @@ export function PriceTag({ active }: { active: boolean }) {
             <style>{`
               .price-tag-scale-wrapper {
                 transform-origin: top center;
-                transform: scale(0.75);
+                transform: scale(0.82);
               }
               @media (min-width: 480px) {
-                .price-tag-scale-wrapper { transform: scale(0.85); }
+                .price-tag-scale-wrapper { transform: scale(0.88); }
               }
               @media (min-width: 768px) {
                 .price-tag-scale-wrapper { transform: scale(0.95); }
@@ -231,7 +231,8 @@ export function PriceTag({ active }: { active: boolean }) {
                     style={{
                       width: '122px',
                       clipPath: 'polygon(0% 0%, 100% 0%, 100% calc(100% - 22px), 50% 100%, 0% calc(100% - 22px))',
-                      background: 'linear-gradient(160deg, #2a3318 0%, #1e2810 40%, #253015 70%, #1a1e0c 100%)',
+                      background: 'linear-gradient(160deg, rgba(42,51,24,0.78) 0%, rgba(30,40,16,0.74) 40%, rgba(37,48,21,0.72) 70%, rgba(26,30,12,0.78) 100%)',
+                      backdropFilter: 'blur(1.2px)',
                       paddingBottom: '32px',
                       boxShadow: `
                         -6px 8px 24px rgba(0,0,0,0.55),
@@ -358,17 +359,10 @@ export function PriceTag({ active }: { active: boolean }) {
    MAIN COMPONENT
 ═══════════════════════════════════ */
 export default function FacilitiesSection() {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: false, margin: '-20% 0px -20% 0px' });
-  
   return (
     <section
-      ref={sectionRef}
       className="relative bg-[#fdfbf7] py-8 md:py-20 lg:py-28 overflow-visible"
     >
-      {/* PRICE TAG - positioned absolutely */}
-      <PriceTag active={isInView} />
-      
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-20 lg:items-center gap-8 md:gap-12">
 
