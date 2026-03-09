@@ -45,7 +45,7 @@ export default function HeroSection() {
     >
       <div className="absolute inset-0 bg-black/20" />
       <div className="relative z-10 px-4 sm:px-4 md:px-6 xxxl:px-[50px] xxl:px-[30px] h-full flex flex-col justify-end">
-        <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-end justify-between pb-0 md:pb-0 h-full">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-end justify-between pb-4 md:pb-8 h-full">
           {isMobile ? (
             <>
               {/* Mobile: Slider right bottom, text left bottom, both bottom-aligned */}
@@ -70,7 +70,7 @@ export default function HeroSection() {
                     style={{ backgroundImage: "url(/hero-color-bg.png)" }}
                   >
                     {/* Image Slider (mobile) */}
-                    <div className="relative overflow-visible mb-2 rounded-[10px] flex-1 min-h-0 flex items-center">
+                    <div className="relative overflow-hidden mb-2 rounded-[10px] flex-1 min-h-0 flex items-center">
                       <div
                         className="flex transition-transform duration-500 ease-in-out w-full"
                         style={{
@@ -90,7 +90,6 @@ export default function HeroSection() {
                                 fill
                                 quality={90}
                                 className="object-cover brightness-110 contrast-110"
-                                style={{ objectPosition: 'center bottom' }}
                               />
                             </div>
                             <p className="text-white text-center text-[11px] font-semibold tracking-wide leading-tight mt-1.5">
@@ -196,7 +195,6 @@ export default function HeroSection() {
                               fill
                               quality={90}
                               className="object-cover brightness-110 contrast-110"
-                              style={{ objectPosition: 'center bottom' }}
                             />
                           </div>
                           <p className="text-white text-center text-[13px] font-semibold tracking-wide mb-0 pb-0 mt-1">
