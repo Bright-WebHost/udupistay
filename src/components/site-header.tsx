@@ -15,6 +15,15 @@ const navItems = [
   { label: "Contact Us", href: "/contact" },
 ];
 
+const homestayMenuItems = [
+  ...homestays.map((homestay) => ({
+    id: homestay.id,
+    title: homestay.title,
+    href: `/${homestay.route.toLowerCase()}`,
+  })),
+  { id: "farmhouse", title: "FARM HOUSE", href: "/farmhouse" },
+];
+
 export default function SiteHeader() {
   const pathname = usePathname();
   // Default to false so text is white on load (over hero)
@@ -158,14 +167,14 @@ export default function SiteHeader() {
                 {/* Dropdown Menu */}
                 {dropdownOpen && (
                   <div className="absolute top-full left-0 mt-2 w-56 bg-white/95 backdrop-blur-xl rounded-xl shadow-2xl border border-white/20 overflow-hidden z-50">
-                    {homestays.map((homestay) => (
+                    {homestayMenuItems.map((item) => (
                       <Link
-                        key={homestay.id}
-                        href={`/${homestay.route.toLowerCase()}`}
+                        key={item.id}
+                        href={item.href}
                         className="block px-4 py-3 text-sm font-medium text-gray-800 hover:bg-[#849826] hover:text-white transition-colors duration-200"
                         onClick={() => setDropdownOpen(false)}
                       >
-                        {homestay.title}
+                        {item.title}
                       </Link>
                     ))}
                   </div>
@@ -284,17 +293,17 @@ export default function SiteHeader() {
                     </Link>
                     {mobileDropdownOpen && (
                       <div className="mt-1 ml-4 flex flex-col gap-1">
-                        {homestays.map((homestay) => (
+                        {homestayMenuItems.map((item) => (
                           <Link
-                            key={homestay.id}
-                            href={`/${homestay.route.toLowerCase()}`}
+                            key={item.id}
+                            href={item.href}
                             className="px-4 py-2.5 text-sm font-medium text-white/80! hover:text-white! hover:bg-white/10 transition-all duration-200 rounded-lg"
                             onClick={() => {
                               setMobileMenuOpen(false);
                               setMobileDropdownOpen(false);
                             }}
                           >
-                            {homestay.title}
+                            {item.title}
                           </Link>
                         ))}
                       </div>

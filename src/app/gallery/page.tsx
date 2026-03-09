@@ -42,16 +42,18 @@ const homestayImages: Record<string, string[]> = {
   ],
   chaletlabonne: [
     '/chalet/new/1.webp', '/chalet/new/2.webp', '/chalet/new/3.webp',
-    '/chalet/new/4.webp', '/chalet/new/5.webp', '/chalet/new/bedroom.webp',
-    '/chalet/new/hall2.webp', '/chalet/new/kitchen2.webp', '/chalet/new/kitchen3.webp',
-    '/chalet/new/scene2.webp', '/chalet/new/scene3.webp'
+    '/chalet/new/4.webp', '/chalet/new/5.webp', '/chalet/new/6.webp',
+    '/chalet/new/7.webp', '/chalet/new/8.webp', '/chalet/new/9.webp',
+    '/chalet/new/10.webp', '/chalet/new/h1.webp', '/chalet/new/h2.webp',
+    '/chalet/new/h3.webp', '/chalet/new/h4.webp', '/chalet/new/h5.webp',
+    '/chalet/new/scene2.webp'
   ],
   viewpoint:     [
     "/view/new/1.webp", "/view/new/2.webp", "/view/new/3.webp",
     "/view/new/4.webp", "/view/new/5.webp", "/view/new/6.webp",
-    "/view/new/7.webp", "/view/new/8.webp", "/view/new/9.webp",
-    "/view/new/10.webp", "/view/new/_DSC3560.webp", "/view/new/_DSC3565.webp",
-    "/view/new/_DSC3591.webp",
+    "/view/new/7.webp", "/view/new/8.webp", "/view/new/10.webp",
+    "/view/new/11.webp", "/view/new/12.webp", "/view/new/13.webp",
+    "/view/new/_DSC3560.webp", "/view/new/_DSC3565.webp", "/view/new/_DSC3591.webp",
   ],
   farmhouse:     ['/farmhouse/1.webp', '/farmhouse/2.webp', '/farmhouse/3.webp', '/farmhouse/4.webp', '/farmhouse/5.webp', '/farmhouse/6.webp', '/farmhouse/7.webp', '/farmhouse/9.webp', '/farmhouse/11.webp'],
 };
@@ -59,6 +61,26 @@ const homestayImages: Record<string, string[]> = {
 const routeKey = (r: string) => r.toLowerCase().replace(/\s+/g, "");
 const getImages = (stay: typeof homestays[0]) =>
   homestayImages[routeKey(stay.route)] || [stay.image];
+
+const farmHouseStay = {
+  id: "farmhouse",
+  title: "FARM HOUSE",
+  subtitle: "Day Visit Experience",
+  route: "farmhouse",
+  image: "/farmhouse/1.webp",
+  description: "Experience authentic farm life with animals and organic gardens.",
+  longDescription: "A countryside escape near Chalet La Bonne Vie.",
+  amenities: ["Farm Animals", "Organic Gardens"],
+  features: ["Day Visits"],
+  rooms: 0,
+  guests: 0,
+  bathrooms: 0,
+  highlights: ["Farm Animals"],
+  location: "Udupi",
+  nearbyAttractions: ["Chalet"],
+} as typeof homestays[0];
+
+const allGalleryStays = [...homestays, farmHouseStay];
 
 type ModalState = { stay: typeof homestays[0]; activeIdx: number } | null;
 
@@ -776,8 +798,8 @@ export default function GalleryPage() {
   }, [isMobileCards, shiftCardImage]);
 
   const filtered = activeFilter === "all"
-    ? homestays
-    : homestays.filter((h) => h.id === activeFilter);
+    ? allGalleryStays
+    : allGalleryStays.filter((h) => h.id === activeFilter);
 
   return (
     <div className="ms-root">
@@ -825,7 +847,7 @@ export default function GalleryPage() {
       <div className="ms-filter">
         <div className="ms-fi">
           <span className="ms-fi-label">Filter</span>
-          {[{ id: "all", title: "All Properties" }, ...homestays.map((h) => ({ id: h.id, title: h.title }))].map(({ id, title }) => (
+          {[{ id: "all", title: "All Properties" }, ...allGalleryStays.map((h) => ({ id: h.id, title: h.title }))].map(({ id, title }) => (
             <button
               key={id}
               onClick={() => { setFilter(id); setVisible(new Set()); }}
