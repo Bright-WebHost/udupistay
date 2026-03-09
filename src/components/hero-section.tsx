@@ -38,7 +38,7 @@ export default function HeroSection() {
       ref={containerRef}
       className="hero-section-1 hero-1 relative h-[88svh] md:min-h-screen overflow-hidden bg-cover bg-center pt-[32px] sm:pt-[50px] md:pt-[80px] lg:pt-[100px] xxl:pt-[120px] pb-[12px] md:pb-[20px]"
       style={{
-        backgroundImage: "url(/hero.jpg)",
+        backgroundImage: "url(/hero.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
