@@ -129,16 +129,16 @@ export default function SiteHeader() {
 
   return (
     <header className="fixed top-2 left-1/2 z-50 -translate-x-1/2 w-[95%] max-w-350 transition-all duration-500">
-      <div className="flex items-center justify-between h-11 md:h-13 xl:h-15">
+      <div className="flex items-center justify-between h-20 sm:h-16 md:h-13 lg:h-14 xl:h-16 2xl:h-18">
         {/* Logo */}
-        <Link href="/" className="flex items-center h-full min-h-0 cursor-pointer">
+        <Link href="/" className="flex items-center h-full min-h-0 cursor-pointer shrink-0">
           <Image
             src={isOverWhite ? "/logo-black.png" : "/logo-white.png"}
             alt="Udupi Homestay Logo"
             width={180}
             height={80}
             priority
-            className="h-8 lg:h-10 xl:h-12 2xl:h-14 w-auto block transition-all duration-500"
+            className="h-14 sm:h-12 lg:h-10 xl:h-12 2xl:h-14 w-auto block transition-all duration-500"
           />
         </Link>
 
@@ -194,8 +194,8 @@ export default function SiteHeader() {
           ))}
         </nav>
 
-        {/* RIGHT ACTIONS - Desktop */}
-        <div className="hidden lg:flex items-center h-full min-h-0 gap-3 xl:gap-4 2xl:gap-6">
+        {/* RIGHT ACTIONS - All screens */}
+        <div className="flex items-center h-full min-h-0 gap-1 sm:gap-2 md:gap-3 lg:gap-3 xl:gap-4 2xl:gap-6 shrink-0">
           {/* Logos */}
           <Image
             src={isOverWhite ? "/udupi-logo.svg" : "/udupi-logo_white_text.svg"}
@@ -203,7 +203,7 @@ export default function SiteHeader() {
             width={220}
             height={100}
             priority
-            className="h-12 lg:h-14 xl:h-16 2xl:h-20 w-auto object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)]"
+            className="h-12 sm:h-11 md:h-10 lg:h-14 xl:h-16 2xl:h-20 w-auto object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)]"
           />
           <Image
             src={isOverWhite ? "/karnatka-logo.png" : "/karnataka_logo_white_text.png"}
@@ -211,11 +211,11 @@ export default function SiteHeader() {
             width={220}
             height={100}
             priority
-            className="h-12 lg:h-14 xl:h-16 2xl:h-20 w-auto object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)]"
+            className="h-12 sm:h-11 md:h-10 lg:h-14 xl:h-16 2xl:h-20 w-auto object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)]"
           />
 
-          {/* Phone */}
-          <div className="flex items-center gap-2 xl:gap-3 px-2 xl:px-4 h-full rounded-2xl backdrop-blur-xl transition-all duration-500 bg-white/10 border border-white/15 min-h-0">
+          {/* Phone - Hidden on mobile, shown on lg+ */}
+          <div className="hidden lg:flex items-center gap-2 xl:gap-3 px-2 xl:px-4 h-full rounded-2xl backdrop-blur-xl transition-all duration-500 bg-white/10 border border-white/15 min-h-0">
             <div className="flex h-8 w-8 xl:h-10 xl:w-10 items-center justify-center rounded-full bg-[#849826]">
               <Phone size={16} className="text-white! xl:hidden" />
               <Phone size={18} className="text-white! hidden xl:block" />
