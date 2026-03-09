@@ -193,16 +193,26 @@ export default function HomestayPage() {
             {/* Media */}
             {video && (
               <div className="lg:col-span-5 flex justify-center">
-                <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] overflow-hidden shadow-2xl rounded-2xl aspect-[9/16]">
-                  <video
-                    className="w-full h-full object-cover block"
-                    src={video}
-                    poster={images[1] || images[0] || "/last.avif"}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
+                <div className="relative w-full max-w-[320px] sm:max-w-[360px] rounded-[28px] p-3 sm:p-4 bg-gradient-to-b from-[#f7faee] via-white to-[#eef4dc] border border-[#dce6b8] shadow-[0_18px_50px_rgba(132,152,38,0.18)]">
+                  <div className="pointer-events-none absolute -top-8 -right-4 w-20 h-20 rounded-full bg-[#849826]/10 blur-xl" />
+                  <div className="pointer-events-none absolute -bottom-8 -left-4 w-24 h-24 rounded-full bg-[#849826]/12 blur-2xl" />
+                  <div className="relative overflow-hidden shadow-2xl rounded-2xl aspect-[9/16] border-2 border-white">
+                    <video
+                      className="w-full h-full object-cover block"
+                      src={video}
+                      poster={images[1] || images[0] || "/last.avif"}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                    <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/35 to-transparent pointer-events-none" />
+                  </div>
+                  <div className="mt-3 flex items-center justify-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.22em] text-[#6c7f22] font-semibold">
+                    <span className="w-1.5 h-1.5 bg-[#849826] rotate-45" />
+                    Estate Video Tour
+                    <span className="w-1.5 h-1.5 bg-[#849826] rotate-45" />
+                  </div>
                 </div>
               </div>
             )}

@@ -10,7 +10,6 @@ import {
   Phone,
   Send,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
 
 const mapLocations = [
@@ -33,6 +32,31 @@ const mapLocations = [
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    estate: "",
+    message: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const whatsappMessage = [
+      "Hello Udupi Homestay, I would like to make an enquiry.",
+      "",
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      `Phone: ${formData.phone}`,
+      `Preferred Estate: ${formData.estate || "Not specified"}`,
+      `Message: ${formData.message}`,
+    ].join("\n");
+
+    const whatsappUrl = `https://wa.me/918971220576?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    setSubmitted(true);
+  };
 
   return (
     <div className="min-h-screen bg-[#f7f5ef] text-[#1c1c1c]">
@@ -131,7 +155,7 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <h3 className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.03em]">
-                      Inquiry Received
+                      Enquiry Received
                     </h3>
                     <p className="mt-2 text-sm text-white/75 max-w-md leading-relaxed">
                       Thank you for reaching out. Our concierge team will contact
@@ -145,13 +169,7 @@ export default function ContactPage() {
                     </button>
                   </div>
                 ) : (
-                  <form
-                    className="space-y-5"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setSubmitted(true);
-                    }}
-                  >
+                  <form className="space-y-5" onSubmit={handleSubmit}>
                     {/* Heading removed as requested */}
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -163,6 +181,10 @@ export default function ContactPage() {
                           type="text"
                           required
                           placeholder="Your full name"
+                          value={formData.name}
+                          onChange={(e) =>
+                            setFormData((prev) => ({ ...prev, name: e.target.value }))
+                          }
                           className="w-full bg-white/10 border border-white/15 focus:border-white outline-none py-3 px-3 text-sm text-white placeholder:text-white/80 rounded-lg"
                         />
                       </div>
@@ -174,6 +196,10 @@ export default function ContactPage() {
                           type="email"
                           required
                           placeholder="your@email.com"
+                          value={formData.email}
+                          onChange={(e) =>
+                            setFormData((prev) => ({ ...prev, email: e.target.value }))
+                          }
                           className="w-full bg-white/10 border border-white/15 focus:border-white outline-none py-3 px-3 text-sm text-white placeholder:text-white/80 rounded-lg"
                         />
                       </div>
@@ -188,6 +214,10 @@ export default function ContactPage() {
                           type="tel"
                           required
                           placeholder="+91 00000 00000"
+                          value={formData.phone}
+                          onChange={(e) =>
+                            setFormData((prev) => ({ ...prev, phone: e.target.value }))
+                          }
                           className="w-full bg-white/10 border border-white/15 focus:border-white outline-none py-3 px-3 text-sm text-white placeholder:text-white/80 rounded-lg"
                         />
                       </div>
@@ -198,6 +228,10 @@ export default function ContactPage() {
                         <input
                           type="text"
                           placeholder="White House / Garden Villa / Other"
+                          value={formData.estate}
+                          onChange={(e) =>
+                            setFormData((prev) => ({ ...prev, estate: e.target.value }))
+                          }
                           className="w-full bg-white/5 border border-white/15 focus:border-[#849826] outline-none py-3 px-3 text-sm text-white placeholder:text-white/30 rounded-lg"
                         />
                       </div>
@@ -211,6 +245,10 @@ export default function ContactPage() {
                         rows={5}
                         required
                         placeholder="Tell us about your dates, number of guests, and special requests."
+                        value={formData.message}
+                        onChange={(e) =>
+                          setFormData((prev) => ({ ...prev, message: e.target.value }))
+                        }
                         className="w-full bg-white/10 border border-white/15 focus:border-white outline-none p-3 text-sm text-white placeholder:text-white/80 rounded-lg resize-none"
                       />
                     </div>
@@ -220,7 +258,7 @@ export default function ContactPage() {
                       className="inline-flex items-center justify-center px-8 py-3 bg-[#849826] text-white rounded-lg uppercase tracking-[0.14em] text-xs font-semibold hover:bg-[#6d7d20] transition-colors"
                     >
                       <Send className="h-4 w-4 mr-2" />
-                      Send Inquiry
+                      Send Enquiry
                     </button>
                   </form>
                 )}

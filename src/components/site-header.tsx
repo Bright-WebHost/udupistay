@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -26,11 +26,30 @@ const homestayMenuItems = [
 
 export default function SiteHeader() {
   const pathname = usePathname();
+  const dropdownCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   // Default to false so text is white on load (over hero)
   const [isOverWhite, setIsOverWhite] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+
+  const clearDropdownCloseTimer = () => {
+    if (!dropdownCloseTimerRef.current) return;
+    clearTimeout(dropdownCloseTimerRef.current);
+    dropdownCloseTimerRef.current = null;
+  };
+
+  const openDesktopDropdown = () => {
+    clearDropdownCloseTimer();
+    setDropdownOpen(true);
+  };
+
+  const closeDesktopDropdownWithDelay = () => {
+    clearDropdownCloseTimer();
+    dropdownCloseTimerRef.current = setTimeout(() => {
+      setDropdownOpen(false);
+    }, 140);
+  };
 
   useEffect(() => {
     if (!mobileMenuOpen) {
@@ -42,6 +61,12 @@ export default function SiteHeader() {
       document.body.style.overflow = "";
     };
   }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    return () => {
+      clearDropdownCloseTimer();
+    };
+  }, []);
 
   useEffect(() => {
     const parseRgb = (color: string) => {
@@ -151,8 +176,8 @@ export default function SiteHeader() {
               <div
                 key={item.label}
                 className="relative"
-                onMouseEnter={() => setDropdownOpen(true)}
-                onMouseLeave={() => setDropdownOpen(false)}
+                onMouseEnter={openDesktopDropdown}
+                onMouseLeave={closeDesktopDropdownWithDelay}
               >
                 <Link
                   href={item.href}
@@ -166,20 +191,17 @@ export default function SiteHeader() {
                 
                 {/* Dropdown Menu */}
                 {dropdownOpen && (
-                  <div className={`absolute top-full left-0 mt-2 w-56 backdrop-blur-xl rounded-xl shadow-2xl border overflow-hidden z-50 ${
-                    isOverWhite 
-                      ? 'bg-white/98 border-white/40' 
-                      : 'bg-black/85 border-white/20'
-                  }`}>
+                  <div
+                    className="absolute top-full left-0 mt-2 w-56 rounded-xl shadow-2xl border overflow-hidden z-50 bg-white border-gray-200"
+                    onMouseEnter={openDesktopDropdown}
+                    onMouseLeave={closeDesktopDropdownWithDelay}
+                  >
                     {homestayMenuItems.map((item) => (
                       <Link
                         key={item.id}
                         href={item.href}
-                        className={`block px-4 py-3 text-sm font-medium transition-colors duration-200 ${
-                          isOverWhite
-                            ? 'text-gray-800 hover:bg-[#849826] hover:text-white'
-                            : 'text-white/90 hover:bg-[#849826] hover:text-white'
-                        }`}
+                        className="block px-4 py-3 text-sm font-medium transition-colors duration-200 text-black! hover:bg-[#849826]! hover:text-white!"
+                        style={{ color: "#111827" }}
                         onClick={() => setDropdownOpen(false)}  
                       >
                         {item.title}

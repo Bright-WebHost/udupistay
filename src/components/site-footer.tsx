@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 
 export default function SiteFooter() {
   return (
@@ -23,23 +22,20 @@ export default function SiteFooter() {
               </p>
             </div>
             
-            {/* Newsletter Form */}
-            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto md:min-w-[500px]">
-              <div className="relative flex-1">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </span>
-                <input
-                  type="email"
-                  placeholder="enter your email"
-                  className="w-full h-[50px] md:h-[55px] pl-12 pr-4 rounded-[8px] bg-white text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#849826]"
-                />
-              </div>
-              <button className="bg-[#73801e] hover:bg-[#849826] text-white px-6 md:px-8 h-[50px] md:h-[55px] rounded-[8px] font-medium uppercase tracking-wide transition-all duration-300 whitespace-nowrap text-sm md:text-base">
-                Subscribe Now
-              </button>
+            {/* WhatsApp CTA */}
+            <div className="w-full md:w-auto md:min-w-[360px] flex justify-center md:justify-end">
+              <a
+                href="https://wa.me/918971220576"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 bg-[#73801e] hover:bg-[#6a751b] text-white px-6 md:px-8 h-[50px] md:h-[55px] rounded-[8px] font-semibold uppercase tracking-wide transition-all duration-300 whitespace-nowrap text-sm md:text-base shadow-lg"
+                aria-label="Chat on WhatsApp"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.52 3.48A11.91 11.91 0 0012.04 0C5.42 0 .04 5.38.04 12c0 2.11.55 4.17 1.6 6.01L0 24l6.2-1.6a11.96 11.96 0 005.84 1.49h.01c6.62 0 12-5.38 12-12 0-3.2-1.24-6.2-3.53-8.42zM12.05 21.1h-.01a9.96 9.96 0 01-5.08-1.39l-.36-.21-3.68.95.98-3.6-.23-.37A9.96 9.96 0 012.04 12c0-5.5 4.48-9.96 9.99-9.96a9.92 9.92 0 017.06 2.93A9.9 9.9 0 0122.01 12c0 5.5-4.46 9.1-9.96 9.1zm5.8-7.29c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.52-.16-.74.16-.22.32-.85 1.05-1.04 1.27-.19.22-.38.24-.7.08-.32-.16-1.35-.5-2.57-1.58-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.38.48-.57.16-.19.22-.32.33-.54.11-.22.06-.41-.03-.57-.08-.16-.74-1.78-1.01-2.44-.26-.62-.52-.54-.74-.55h-.64c-.22 0-.57.08-.87.41-.3.32-1.14 1.12-1.14 2.73s1.17 3.16 1.33 3.38c.16.22 2.3 3.5 5.56 4.9.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.62-.09 1.9-.78 2.17-1.53.27-.75.27-1.39.19-1.53-.08-.14-.3-.22-.62-.38z" />
+                </svg>
+                Chat on WhatsApp
+              </a>
             </div>
           </div>
         </div>
@@ -191,10 +187,23 @@ export default function SiteFooter() {
             </div>
           </div>
 
-          {/* Scroll to Top Button (matching reference) */}
+          {/* Sticky WhatsApp Button */}
+          <a
+            href="https://wa.me/918971220576"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fixed bottom-22 right-5 sm:bottom-24 sm:right-8 w-12 h-12 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-lg transition-all duration-300 z-50"
+            aria-label="Open WhatsApp chat"
+          >
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.52 3.48A11.91 11.91 0 0012.04 0C5.42 0 .04 5.38.04 12c0 2.11.55 4.17 1.6 6.01L0 24l6.2-1.6a11.96 11.96 0 005.84 1.49h.01c6.62 0 12-5.38 12-12 0-3.2-1.24-6.2-3.53-8.42zM12.05 21.1h-.01a9.96 9.96 0 01-5.08-1.39l-.36-.21-3.68.95.98-3.6-.23-.37A9.96 9.96 0 012.04 12c0-5.5 4.48-9.96 9.99-9.96a9.92 9.92 0 017.06 2.93A9.9 9.9 0 0122.01 12c0 5.5-4.46 9.1-9.96 9.1zm5.8-7.29c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.52-.16-.74.16-.22.32-.85 1.05-1.04 1.27-.19.22-.38.24-.7.08-.32-.16-1.35-.5-2.57-1.58-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.38.48-.57.16-.19.22-.32.33-.54.11-.22.06-.41-.03-.57-.08-.16-.74-1.78-1.01-2.44-.26-.62-.52-.54-.74-.55h-.64c-.22 0-.57.08-.87.41-.3.32-1.14 1.12-1.14 2.73s1.17 3.16 1.33 3.38c.16.22 2.3 3.5 5.56 4.9.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.62-.09 1.9-.78 2.17-1.53.27-.75.27-1.39.19-1.53-.08-.14-.3-.22-.62-.38z" />
+            </svg>
+          </a>
+
+          {/* Scroll to Top Button */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-[#849826] hover:bg-[#9B8B6B] text-white flex items-center justify-center shadow-lg transition-all duration-300 z-50"
+            className="fixed bottom-6 right-5 sm:bottom-8 sm:right-8 w-12 h-12 rounded-full bg-[#849826] hover:bg-[#9B8B6B] text-white flex items-center justify-center shadow-lg transition-all duration-300 z-50"
             aria-label="Scroll to top"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
