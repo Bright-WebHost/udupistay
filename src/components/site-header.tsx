@@ -129,7 +129,7 @@ export default function SiteHeader() {
 
   return (
     <header className="fixed top-2 left-1/2 z-50 -translate-x-1/2 w-[95%] max-w-350 transition-all duration-500">
-      <div className="flex items-center justify-between h-20 sm:h-16 md:h-13 lg:h-14 xl:h-16 2xl:h-18">
+      <div className="flex items-center justify-between h-16 sm:h-15 md:h-14 lg:h-14 xl:h-16 2xl:h-18">
         {/* Logo */}
         <Link href="/" className="flex items-center h-full min-h-0 cursor-pointer shrink-0">
           <Image
@@ -138,7 +138,7 @@ export default function SiteHeader() {
             width={180}
             height={80}
             priority
-            className="h-16 sm:h-12 lg:h-10 xl:h-12 2xl:h-14 w-auto block transition-all duration-500"
+            className="h-10 sm:h-9 lg:h-10 xl:h-12 2xl:h-14 w-auto block transition-all duration-500"
           />
         </Link>
 
@@ -211,7 +211,7 @@ export default function SiteHeader() {
             width={220}
             height={100}
             priority
-            className="h-14 sm:h-12 md:h-10 lg:h-14 xl:h-16 2xl:h-20 w-auto object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)]"
+            className="h-10 sm:h-9 md:h-10 lg:h-14 xl:h-16 2xl:h-20 w-auto object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)]"
           />
           <Image
             src={isOverWhite ? "/karnatka-logo.png" : "/karnataka_logo_white_text.png"}
