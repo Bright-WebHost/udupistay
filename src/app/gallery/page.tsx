@@ -7,28 +7,38 @@ import { X, ChevronLeft, ChevronRight, MapPin, Camera, Eye } from "lucide-react"
 
 const homestayImages: Record<string, string[]> = {
   whitehouse: [
-    "/whitehouse/new/12.webp", "/whitehouse/new/4.webp", "/whitehouse/new/11.webp",
-    "/whitehouse/new/8.webp",  "/whitehouse/new/2.webp", "/whitehouse/new/h3.webp",
-    "/whitehouse/new/h2.webp", "/whitehouse/new/6.webp",
+    "/whitehouse/new/1.webp", "/whitehouse/new/2.webp", "/whitehouse/new/3.webp",
+    "/whitehouse/new/4.webp", "/whitehouse/new/5.webp", "/whitehouse/new/6.webp",
+    "/whitehouse/new/8.webp", "/whitehouse/new/9.webp", "/whitehouse/new/10.webp",
+    "/whitehouse/new/11.webp", "/whitehouse/new/12.webp", "/whitehouse/new/h1.webp",
+    "/whitehouse/new/h2.webp", "/whitehouse/new/h3.webp", "/whitehouse/new/h4.webp",
+    "/whitehouse/new/h5.webp",
   ],
-  gardenvilla:   Array.from({ length: 9 },  (_, i) => `/gradernVilla/new/${i + 1}.webp`),
+  gardenvilla:   [
+    "/gradernVilla/new/1.webp", "/gradernVilla/new/2.webp", "/gradernVilla/new/3.webp",
+    "/gradernVilla/new/4.webp", "/gradernVilla/new/5.webp", "/gradernVilla/new/6.webp",
+    "/gradernVilla/new/7.webp", "/gradernVilla/new/8.webp", "/gradernVilla/new/9.webp",
+    "/gradernVilla/new/10.webp", "/gradernVilla/new/11.webp", "/gradernVilla/new/h1.webp",
+    "/gradernVilla/new/h2.webp", "/gradernVilla/new/h3.webp", "/gradernVilla/new/h4.webp",
+  ],
   cottagehouse:  [
-    "/Cottage/new/1.webp",
-    "/Cottage/new/_DSC3682.webp",
-    "/Cottage/new/_DSC3691.webp",
-    "/Cottage/new/_DSC3692.webp",
+    "/Cottage/new/1.webp", "/Cottage/new/2.webp", "/Cottage/new/3.webp",
+    "/Cottage/new/4.webp", "/Cottage/new/5.webp", "/Cottage/new/6.webp",
+    "/Cottage/new/7.webp", "/Cottage/new/9.webp", "/Cottage/new/10.webp",
+    "/Cottage/new/11.webp", "/Cottage/new/h1.webp", "/Cottage/new/h2.webp",
+    "/Cottage/new/h3.webp",
   ],
   topvilla:      [
-    "/hilltop/new/1.webp",
-    "/hilltop/new/_DSC3643.webp",
+    "/hilltop/new/1.webp", "/hilltop/new/2.webp", "/hilltop/new/3.webp",
+    "/hilltop/new/4.webp", "/hilltop/new/5.webp", "/hilltop/new/6.webp",
+    "/hilltop/new/7.webp", "/hilltop/new/8.webp", "/hilltop/new/h2.webp",
+    "/hilltop/new/h5.webp",
   ],
   sunrisehome:   [
-    "/sunrise/new/1.webp",
-    "/sunrise/new/_DSC3596.webp",
-    "/sunrise/new/_DSC3602.webp",
-    "/sunrise/new/_DSC3603.webp",
-    "/sunrise/new/_DSC3605.webp",
-    "/sunrise/new/_DSC3607.webp",
+    "/sunrise/new/1.webp", "/sunrise/new/2.webp", "/sunrise/new/3.webp",
+    "/sunrise/new/4.webp", "/sunrise/new/5.webp", "/sunrise/new/6.webp",
+    "/sunrise/new/7.webp", "/sunrise/new/8.webp", "/sunrise/new/9.webp",
+    "/sunrise/new/h1.webp", "/sunrise/new/h2.webp", "/sunrise/new/h3.webp",
   ],
   chaletlabonne: [
     '/chalet/new/1.webp', '/chalet/new/2.webp', '/chalet/new/3.webp',
@@ -36,8 +46,14 @@ const homestayImages: Record<string, string[]> = {
     '/chalet/new/hall2.webp', '/chalet/new/kitchen2.webp', '/chalet/new/kitchen3.webp',
     '/chalet/new/scene2.webp', '/chalet/new/scene3.webp'
   ],
-  viewpoint:     Array.from({ length: 10 }, (_, i) => `/view/new/${i + 1}.webp`),
-  farmhouse:     ["/farmhouse/1.webp", "/farmhouse/11.webp", "/farmhouse/2.webp", "/farmhouse/9.webp", "/farmhouse/3.webp", "/farmhouse/4.webp", "/farmhouse/5.webp", "/farmhouse/6.webp", "/farmhouse/7.webp"],
+  viewpoint:     [
+    "/view/new/1.webp", "/view/new/2.webp", "/view/new/3.webp",
+    "/view/new/4.webp", "/view/new/5.webp", "/view/new/6.webp",
+    "/view/new/7.webp", "/view/new/8.webp", "/view/new/9.webp",
+    "/view/new/10.webp", "/view/new/_DSC3560.webp", "/view/new/_DSC3565.webp",
+    "/view/new/_DSC3591.webp",
+  ],
+  farmhouse:     ['/farmhouse/1.webp', '/farmhouse/2.webp', '/farmhouse/3.webp', '/farmhouse/4.webp', '/farmhouse/5.webp', '/farmhouse/6.webp', '/farmhouse/7.webp', '/farmhouse/9.webp', '/farmhouse/11.webp'],
 };
 
 const routeKey = (r: string) => r.toLowerCase().replace(/\s+/g, "");

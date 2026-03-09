@@ -1,8 +1,9 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { useEffect, useState, useRef } from 'react';
 import { Car, Wifi, Sparkles, Key, Home, Waves, Phone } from 'lucide-react';
+import Link from 'next/link';
 
 const facilities = [
   { title: 'Free Car Parking',    icon: Car,       filled: false },
@@ -357,10 +358,17 @@ export function PriceTag({ active }: { active: boolean }) {
    MAIN COMPONENT
 ═══════════════════════════════════ */
 export default function FacilitiesSection() {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: false, margin: '-20% 0px -20% 0px' });
+  
   return (
     <section
+      ref={sectionRef}
       className="relative bg-[#fdfbf7] py-8 md:py-20 lg:py-28 overflow-visible"
     >
+      {/* PRICE TAG - positioned absolutely */}
+      <PriceTag active={isInView} />
+      
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-20 lg:items-center gap-8 md:gap-12">
 
@@ -463,13 +471,15 @@ export default function FacilitiesSection() {
                 </span>
               </motion.div>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className="rounded-lg md:rounded-xl bg-[#849826] px-6 sm:px-10 py-3 sm:py-4 font-semibold text-white transition-all duration-300 shadow-md hover:shadow-lg uppercase tracking-wide text-xs sm:text-base"
-              >
-                Book Now
-              </motion.button>
+              <Link href="/contact">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="rounded-lg md:rounded-xl bg-[#849826] px-6 sm:px-10 py-3 sm:py-4 font-semibold text-white transition-all duration-300 shadow-md hover:shadow-lg uppercase tracking-wide text-xs sm:text-base"
+                >
+                  Book Now
+                </motion.button>
+              </Link>
             </motion.div>
           </motion.div>
 

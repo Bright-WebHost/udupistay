@@ -322,7 +322,7 @@ export const homestays: Homestay[] = [
 ];
 
 export const getHomestayByRoute = (route: string) => {
-  return homestays.find(h => h.route === route);
+  return homestays.find(h => h.route.toLowerCase() === route.toLowerCase());
 };
 
 export const getHomestayById = (id: string) => {

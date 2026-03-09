@@ -88,7 +88,7 @@ export default function HomestaysStickyScroll() {
             {homestays.map((homestay, index) => (
               <Link
                 key={homestay.id}
-                href={homestay.route}
+                href={`/${homestay.route.toLowerCase()}`}
                 className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300"
               >
                 {/* Image */}
@@ -188,7 +188,7 @@ export default function HomestaysStickyScroll() {
               <div className="absolute inset-6 lg:inset-8 xl:inset-12">
                 {/* Card with rounded corners and shadow */}
                 <Link 
-                  href={homestay.route}
+                  href={`/${homestay.route.toLowerCase()}`}
                   className={`relative h-full w-full rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 group ${
                     isActive ? 'shadow-[0_0_40px_rgba(132,152,38,0.3)]' : ''
                   }`}

@@ -2,6 +2,6 @@ import { homestays } from "@/data/homestays";
 
 export async function generateStaticParams() {
   return homestays.map((homestay) => ({
-    homestay: homestay.route,
+    homestay: homestay.route.toLowerCase(),
   }));
 }

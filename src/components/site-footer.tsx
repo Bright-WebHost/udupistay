@@ -61,7 +61,7 @@ export default function SiteFooter() {
                 <Link href="/about" className="hover:text-[#849826] transition">
                   About Us
                 </Link>
-                <Link href="/project" className="hover:text-[#849826] transition">
+                <Link href="/homestays" className="hover:text-[#849826] transition">
                   Home Stays
                 </Link>
                 <Link href="/contact" className="hover:text-[#849826] transition">
@@ -175,7 +175,7 @@ export default function SiteFooter() {
                   About
                 </Link>
                 <span>/</span>
-                <Link href="/project" className="hover:text-[#849826] transition">
+                <Link href="/homestays" className="hover:text-[#849826] transition">
                   Home Stays
                 </Link>
                 <span>/</span>

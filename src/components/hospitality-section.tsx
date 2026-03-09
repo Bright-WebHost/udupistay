@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { Play } from 'lucide-react';
 import { useRef } from 'react';
+import Link from 'next/link';
 
 export default function HospitalitySection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -107,14 +108,16 @@ export default function HospitalitySection() {
 
               <div className="relative flex flex-row items-center gap-3 md:gap-4 p-4 md:p-5 rounded-xl flex-wrap sm:flex-nowrap">
                 {/* Know More */}
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-6 py-2.5 text-white font-semibold rounded-md shadow-lg hover:shadow-xl transition-all duration-300 uppercase tracking-wide text-xs md:text-sm whitespace-nowrap flex-shrink-0"
-                  style={{ backgroundColor: '#849826' }}
-                >
-                  Know More
-                </motion.button>
+                <Link href="/homestays">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="px-6 py-2.5 text-white font-semibold rounded-md shadow-lg hover:shadow-xl transition-all duration-300 uppercase tracking-wide text-xs md:text-sm whitespace-nowrap flex-shrink-0"
+                    style={{ backgroundColor: '#849826' }}
+                  >
+                    Know More
+                  </motion.button>
+                </Link>
 
                 {/* View Videos */}
                 <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">

@@ -120,7 +120,7 @@ export default function HomestaysHorizontalScroll() {
             return (
               <Link
                 key={homestay.id}
-                href={homestay.route}
+                href={`/${homestay.route.toLowerCase()}`}
                 className={`relative shrink-0 rounded-full border border-white/20 transition-all duration-500 overflow-hidden ${
                   isCenter
                     ? "shadow-[0_25px_80px_rgba(0,0,0,0.5)]"

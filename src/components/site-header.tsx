@@ -265,13 +265,23 @@ export default function SiteHeader() {
               {navItems.map((item) => (
                 item.hasDropdown ? (
                   <div key={item.label}>
-                    <button
-                      onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+                    <Link
+                      href={item.href}
                       className="w-full flex items-center justify-between px-4 py-3 text-base font-semibold text-white! hover:bg-white/10 hover:text-white/90! transition-all duration-200 rounded-lg"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
-                      {item.label}
-                      <ChevronDown size={18} className={`transition-transform duration-200 ${mobileDropdownOpen ? 'rotate-180' : ''}`} />
-                    </button>
+                      <span>{item.label}</span>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setMobileDropdownOpen(!mobileDropdownOpen);
+                        }}
+                        className="p-1"
+                      >
+                        <ChevronDown size={18} className={`transition-transform duration-200 ${mobileDropdownOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                    </Link>
                     {mobileDropdownOpen && (
                       <div className="mt-1 ml-4 flex flex-col gap-1">
                         {homestays.map((homestay) => (
