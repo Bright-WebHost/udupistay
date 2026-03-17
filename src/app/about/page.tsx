@@ -378,8 +378,8 @@ export default function AboutPage() {
             transform: `translateY(${scrollY * 0.5}px)`,
           }}
         >
-          <img src="/about-hero.webp" alt="Udupi Homestays" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+          <img src="/homestay_premium_sky.jpg" alt="Udupi Homestays" className="w-full h-full object-cover object-top" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
         </div>
         <div className="relative z-10 text-center text-white px-6 max-w-5xl mx-auto fade-up visible">
           <div className="mb-4 flex items-center justify-center gap-3">

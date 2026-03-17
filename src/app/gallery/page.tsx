@@ -807,7 +807,7 @@ export default function GalleryPage() {
       {/* ══ HERO ══ */}
       <section className="ms-hero">
         <div className="ms-hero-bg" style={{ transform: `translateY(${scrollY * 0.38}px)` }}>
-          <Image src="/about-hero.webp" alt="Gallery" fill className="object-cover" sizes="100vw" priority />
+          <Image src="/viewpoint.webp" alt="Gallery" fill className="object-cover object-center" sizes="100vw" priority />
           <div className="ms-hero-ov" />
           <div className="ms-hero-grain" />
         </div>
