@@ -67,7 +67,7 @@ export default function HeroSection() {
                 <div className="w-[48%] flex-shrink-0 flex justify-end items-end pb-0 self-stretch">
                   <div
                     className="hero-box w-full rounded-[12px] backdrop-blur-[40px] p-1.5 bg-cover border border-white/10 shadow-lg flex flex-col"
-                    style={{ backgroundImage: "url(/hero-color-bg.png)" }}
+                    style={{ backgroundImage: "url(/color-bg.png)" }}
                   >
                     {/* Image Slider (mobile) */}
                     <div className="relative overflow-hidden mb-2 rounded-[10px] flex-1 min-h-0 flex items-center">
@@ -148,7 +148,7 @@ export default function HeroSection() {
                 <div
                   className={`${!isMobile ? "animate-fade-up-4" : ""} hero-box w-full rounded-[10px] backdrop-blur-[40px] p-1.5 bg-cover`}
                   style={{
-                    backgroundImage: "url(/hero-color-bg.png)",
+                    backgroundImage: "url(/color-bg.png)",
                   }}
                 >
                   {/* Title and Arrows in one row ABOVE the slider */}

@@ -199,7 +199,7 @@ export default function StaysPage() {
           style={{ transform: `translateY(${scrollY * 0.5}px)` }}
         >
           <Image
-            src={homestays[0]?.image || "/stays-hero.jpg"}
+            src={homestays[0]?.image || "/whitehouse/new/1.webp"}
             alt="Luxury Homestays"
             fill
             className="object-cover"

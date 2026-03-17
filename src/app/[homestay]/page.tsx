@@ -64,15 +64,18 @@ const homestayImages: Record<string, string[]> = {
   ],
   chaletlabonne: [
     '/chalet/new/1.webp', '/chalet/new/2.webp', '/chalet/new/3.webp',
-    '/chalet/new/4.webp', '/chalet/new/5.webp', '/chalet/new/bedroom.webp',
-    '/chalet/new/hall2.webp', '/chalet/new/kitchen2.webp', '/chalet/new/kitchen3.webp',
-    '/chalet/new/scene2.webp', '/chalet/new/scene3.webp'
+    '/chalet/new/4.webp', '/chalet/new/5.webp', '/chalet/new/6.webp',
+    '/chalet/new/7.webp', '/chalet/new/8.webp', '/chalet/new/9.webp',
+    '/chalet/new/10.webp', '/chalet/new/h1.webp', '/chalet/new/h2.webp',
+    '/chalet/new/h3.webp', '/chalet/new/h4.webp', '/chalet/new/h5.webp',
+    '/chalet/new/scene2.webp'
   ],
   viewpoint:     [
     "/view/new/1.webp", "/view/new/2.webp", "/view/new/3.webp",
     "/view/new/4.webp", "/view/new/5.webp", "/view/new/6.webp",
-    "/view/new/7.webp", "/view/new/8.webp", "/view/new/9.webp",
-    "/view/new/10.webp", "/view/new/_DSC3560.webp", "/view/new/_DSC3565.webp",
+    "/view/new/7.webp", "/view/new/8.webp", "/view/new/10.webp",
+    "/view/new/11.webp", "/view/new/12.webp", "/view/new/13.webp",
+    "/view/new/_DSC3560.webp", "/view/new/_DSC3565.webp",
     "/view/new/_DSC3591.webp",
   ],
 };
@@ -183,7 +186,7 @@ export default function HomestayPage() {
       {/* ══ ABOUT ═════════════════════════════════════════════════════ */}
       <section className="relative py-14 md:py-20 lg:py-24 bg-white overflow-hidden">
         <Image
-          src="/Vector3.png" alt=""
+          src="/about-shape3.png" alt=""
           width={700} height={700} quality={90}
           className="absolute -right-16 -top-16 w-[400px] md:w-[600px] lg:w-[700px] pointer-events-none opacity-60 hidden md:block"
         />

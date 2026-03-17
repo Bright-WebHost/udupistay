@@ -6,7 +6,7 @@ export default function SiteFooter() {
   return (
     <footer className="relative bg-[#1a1a1a] text-white overflow-hidden">
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0 bg-[url('/footer-bg.jpg')] bg-cover bg-center opacity-20" />
+      <div className="absolute inset-0 bg-[url('/homestayback.jpg')] bg-cover bg-center opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black/90" />
       
       <div className="relative">

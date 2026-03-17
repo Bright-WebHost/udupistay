@@ -570,8 +570,8 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-          <div data-animate="why-cards" className={`grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 spread-cards ${visibleSections.has('why-cards') ? 'visible' : ''}`}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+          <div data-animate="why-cards" className={`grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 spread-cards ${visibleSections.has('why-cards') ? 'visible' : ''}`}>
             {cards.map((card, i) => (
               <div 
                 key={i}
