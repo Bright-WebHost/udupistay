@@ -22,7 +22,7 @@ export const homestays: Homestay[] = [
     title: "WHITE HOUSE",
     subtitle: "Luxury Coastal Retreat",
     route: "Whitehouse",
-    image: "/whitehouse.webp?v=20260317",
+    image: "/whitehouse.webp",
     description: "Premium 7BHK family homestay in Udupi near Malpe Beach, perfect for large groups and celebrations with 8 modern bathrooms.",
     longDescription: "Experience one of the best homestays in Udupi at White House, a premium 7-bedroom coastal villa with spacious interiors, private balconies, and elegant modern comfort. Located near Malpe Beach with easy access to Udupi city attractions, this luxury Udupi Karnataka homestay is perfect for large families, reunions, and group celebrations.",
     amenities: [
