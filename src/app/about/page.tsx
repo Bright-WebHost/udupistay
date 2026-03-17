@@ -120,9 +120,7 @@ export default function AboutPage() {
     { title: "Prime Location", desc: "Near cultural landmarks and pristine beaches", number: "01", image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80" },
     { title: "Authentic Experience", desc: "Genuine Karnataka hospitality rooted in tradition", number: "02", image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80" },
     { title: "Modern Comfort", desc: "Contemporary amenities with traditional elegance", number: "03", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" },
-    { title: "Personal Service", desc: "Dedicated attention ensuring exceptional stays", number: "04", image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80" },
-    { title: "Culinary Excellence", desc: "Authentic local cuisine prepared with passion", number: "05", image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" },
-    { title: "Peaceful Retreats", desc: "Serene environments perfect for relaxation", number: "06", image: "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=80" },
+    { title: "Peaceful Retreats", desc: "Serene environments perfect for relaxation", number: "04", image: "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=80" },
   ];
 
   const services = [
