@@ -61,6 +61,8 @@ export default function FarmHousePage() {
           fill
           className="object-cover object-center"
           priority
+          quality={85}
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
@@ -126,6 +128,9 @@ export default function FarmHousePage() {
                 alt="Farm birds"
                 fill
                 className="object-cover"
+                loading="lazy"
+                quality={85}
+                sizes="(max-width: 768px) 100vw, 600px"
               />
             </div>
           </div>
@@ -241,7 +246,15 @@ export default function FarmHousePage() {
             style={{ aspectRatio: "4/3" }}
             onClick={(e) => e.stopPropagation()}
           >
-            <Image src={selectedImage.src} alt={selectedImage.title} fill className="object-contain" sizes="100vw" />
+            <Image 
+              src={selectedImage.src} 
+              alt={selectedImage.title} 
+              fill 
+              className="object-contain" 
+              sizes="100vw"
+              quality={85}
+              priority
+            />
           </div>
           <p className="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/40 text-xs">
             {selectedIndex + 1} / {allImages.length}
@@ -261,6 +274,8 @@ function GalleryTile({ image, sizes }: { image: { src: string; title: string }; 
         fill
         className="object-cover group-hover:scale-105 transition-transform duration-500"
         sizes={sizes}
+        quality={80}
+        loading="lazy"
       />
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

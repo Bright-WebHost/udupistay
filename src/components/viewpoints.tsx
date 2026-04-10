@@ -99,6 +99,9 @@ export default function ViewpointOasisSection() {
                     alt={thumb.alt}
                     fill
                     className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 640px) 70px, 90px"
+                    quality={75}
                   />
                 </button>
               ))}
@@ -142,6 +145,9 @@ export default function ViewpointOasisSection() {
                   fill
                   className="object-cover"
                   priority={index === 0}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  sizes="(max-width: 900px) 100vw, 50vw"
+                  quality={85}
                 />
               </div>
             ))}

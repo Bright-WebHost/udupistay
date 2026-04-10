@@ -807,7 +807,15 @@ export default function GalleryPage() {
       {/* ══ HERO ══ */}
       <section className="ms-hero">
         <div className="ms-hero-bg" style={{ transform: `translateY(${scrollY * 0.38}px)` }}>
-          <Image src="/viewpoint.webp" alt="Gallery" fill className="object-cover object-center" sizes="100vw" priority />
+          <Image 
+            src="/viewpoint.webp" 
+            alt="Gallery" 
+            fill 
+            className="object-cover object-center" 
+            sizes="100vw" 
+            priority 
+            quality={80}
+          />
           <div className="ms-hero-ov" />
           <div className="ms-hero-grain" />
         </div>
@@ -874,7 +882,7 @@ export default function GalleryPage() {
           return (
             <div
               key={stay.id}
-              className={`ms-card${(idx + 1) % 7 === 0 ? " ms-card-full" : ""}`}
+              className={`ms-card${stay.id === "farmhouse" || (idx + 1) % 7 === 0 ? " ms-card-full" : ""}`}
               onClick={() => {
                 if (suppressCardOpenRef.current[stay.id]) return;
                 openModal(stay);
@@ -890,7 +898,16 @@ export default function GalleryPage() {
                   key={`${stay.id}-${activeCardIdx}`}
                   className={`ms-cslide${cardDir === 1 ? " ms-cslide-next" : " ms-cslide-prev"}`}
                 >
-                  <Image src={imgs[activeCardIdx]} alt={stay.title} fill className="object-cover" priority={idx < 4} />
+                  <Image 
+                    src={imgs[activeCardIdx]} 
+                    alt={stay.title} 
+                    fill 
+                    className="object-cover" 
+                    priority={idx < 4}
+                    loading={idx < 4 ? "eager" : "lazy"}
+                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 50vw, 33vw"
+                    quality={80}
+                  />
                 </div>
                 <div className="ms-cgrad" />
                 <div className="ms-pill"><Camera size={9} />{imgs.length} photos</div>
@@ -997,7 +1014,15 @@ export default function GalleryPage() {
               <div className="ms-mbody">
                 <div className="ms-mstage" onTouchStart={touchStartX}>
                   <div key={modal.activeIdx} className={`ms-mimg${imgOn ? " ms-mon" : " ms-moff"}`}>
-                    <Image src={imgs[modal.activeIdx]} alt="" fill className="object-contain" priority />
+                    <Image 
+                      src={imgs[modal.activeIdx]} 
+                      alt="" 
+                      fill 
+                      className="object-contain" 
+                      priority
+                      sizes="(max-width: 900px) 100vw, 70vw"
+                      quality={85}
+                    />
                   </div>
                   <button className="ms-mnav ms-mprev" onClick={() => goTo(-1)}><ChevronLeft size={16} /></button>
                   <button className="ms-mnav ms-mnext" onClick={() => goTo(1)}><ChevronRight size={16} /></button>
@@ -1025,7 +1050,15 @@ export default function GalleryPage() {
                           setTimeout(() => { setModal((m) => m ? { ...m, activeIdx: i } : m); setImgOn(true); }, 110);
                         }}
                       >
-                        <Image src={img} alt="" fill className="object-cover" />
+                        <Image 
+                          src={img} 
+                          alt="" 
+                          fill 
+                          className="object-cover"
+                          loading="lazy"
+                          sizes="(max-width: 900px) 80px, 100px"
+                          quality={75}
+                        />
                       </div>
                     ))}
                   </div>

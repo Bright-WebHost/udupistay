@@ -88,7 +88,9 @@ export default function HeroSection() {
                                 src={facility.img}
                                 alt={facility.title}
                                 fill
-                                quality={90}
+                                quality={85}
+                                loading="lazy"
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 50vw, 400px"
                                 className="object-cover brightness-110 contrast-110"
                               />
                             </div>
@@ -193,7 +195,9 @@ export default function HeroSection() {
                               src={facility.img}
                               alt={facility.title}
                               fill
-                              quality={90}
+                              quality={85}
+                              loading="lazy"
+                              sizes="(max-width: 640px) 85vw, (max-width: 1024px) 55vw, 400px"
                               className="object-cover brightness-110 contrast-110"
                             />
                           </div>

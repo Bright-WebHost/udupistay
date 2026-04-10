@@ -159,7 +159,15 @@ export default function HomestayPage() {
         <div className="relative h-full w-full">
           {heroImage && (
             <>
-              <Image src={heroImage} alt={homestay.title} fill className="object-cover" priority quality={95} />
+              <Image 
+                src={heroImage} 
+                alt={homestay.title} 
+                fill 
+                className="object-cover" 
+                priority 
+                quality={90}
+                sizes="100vw"
+              />
               <div className="absolute inset-0 bg-black/20" />
             </>
           )}
@@ -187,7 +195,8 @@ export default function HomestayPage() {
       <section className="relative py-14 md:py-20 lg:py-24 bg-white overflow-hidden">
         <Image
           src="/about-shape3.png" alt=""
-          width={700} height={700} quality={90}
+          width={700} height={700} quality={80}
+          loading="lazy"
           className="absolute -right-16 -top-16 w-[400px] md:w-[600px] lg:w-[700px] pointer-events-none opacity-60 hidden md:block"
         />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
@@ -325,7 +334,9 @@ export default function HomestayPage() {
                           src={cardImage}
                           alt={`${h.title} - Homestay in Udupi`}
                           fill
-                          quality={90}
+                          quality={85}
+                          loading="lazy"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
                           className="object-cover transition-transform duration-700"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent" />

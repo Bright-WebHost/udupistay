@@ -5,63 +5,60 @@ import Link from "next/link";
 
 export default function FarmHouseSection() {
   return (
-    <section className="relative w-full py-8 md:py-10 bg-gray-50 border-t border-gray-200">
+    <section className="relative w-full py-6 md:py-12 lg:py-14 bg-white">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-6 md:mb-8">
-          <span className="inline-block text-[10px] font-semibold tracking-[0.3em] uppercase text-[#849826] mb-2">
-            Day Visit Experience · Near Chalet La Bonne Vie
-          </span>
-          <h2 className="text-xl md:text-2xl font-serif font-semibold text-gray-900">
-            The Farm House
-          </h2>
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[280px] md:min-h-[340px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl">
+          {/* Left Side - Content */}
+          <div className="bg-gradient-to-br from-[#849826] to-[#6d7f1e] p-4 sm:p-5 md:p-8 lg:p-10 flex flex-col justify-between">
+            {/* Top Content */}
+            <div>
+              {/* Label */}
+              <div className="mb-1 sm:mb-2 md:mb-3">
+                <span className="text-white/90 text-[9px] sm:text-xs md:text-xs font-semibold tracking-[0.2em] uppercase">
+                  DAY VISIT EXPERIENCE
+                </span>
+              </div>
 
-        {/* Card with Image + Content */}
-        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-          <div className="flex flex-col md:flex-row">
-            {/* Image - Top on mobile, Left on desktop */}
-            <div className="md:w-2/5 lg:w-1/3 relative h-40 md:h-auto md:min-h-[240px]">
-              <Image
-                src="/farmhouse/1.webp"
-                alt="The Farm House"
-                fill
-                className="object-cover"
-                priority
-              />
+              {/* Heading */}
+              <h2 className="text-white font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold uppercase tracking-[0.02em] leading-tight mb-2 sm:mb-3 md:mb-4">
+                The Farm House
+              </h2>
+
+              {/* Subtitle */}
+              <p className="text-white/90 text-xs sm:text-sm md:text-base lg:text-lg font-light mb-2 md:mb-3">
+                Farm Animals, Organic Gardens, Countryside Experience
+              </p>
+
+              {/* Description */}
+              <div className="text-white/90 text-[11px] sm:text-xs md:text-sm lg:text-base font-light leading-relaxed max-w-xl space-y-2 md:space-y-2">
+                <p>
+                  Interact with farm animals, explore organic gardens, and immerse yourself in authentic rural life. Perfect for families and nature enthusiasts seeking a countryside escape near Chalet La Bonne Vie.
+                </p>
+              </div>
             </div>
 
-            {/* Content */}
-            <div className="md:w-3/5 lg:w-2/3 p-4 md:p-5 lg:p-6 flex flex-col justify-between">
-              <div>
-                <h3 className="text-lg md:text-xl font-serif font-semibold text-gray-900 mb-2">
-                  A Living Farm Experience
-                </h3>
-                <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-3">
-                  Interact with farm animals, explore organic gardens, and immerse yourself in authentic rural life. Perfect for families and nature enthusiasts seeking a countryside escape.
-                </p>
-
-                {/* Features */}
-                <div className="flex flex-wrap gap-3 mb-4">
-                  <div className="flex items-center gap-1.5 text-xs md:text-sm">
-                    <span className="text-[#849826] font-bold">✓</span>
-                    <span className="text-gray-700">Farm Animals</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-xs md:text-sm">
-                    <span className="text-[#849826] font-bold">✓</span>
-                    <span className="text-gray-700">Gardens</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-xs md:text-sm">
-                    <span className="text-[#849826] font-bold">✓</span>
-                    <span className="text-gray-700">Day Visits</span>
-                  </div>
+            {/* Bottom Content - Features */}
+            <div className="mt-4 sm:mt-6 md:mt-8">
+              {/* Features */}
+              <div className="flex flex-wrap gap-3 mb-4 md:mb-6">
+                <div className="flex items-center gap-1.5 text-xs md:text-sm">
+                  <span className="text-white font-bold">✓</span>
+                  <span className="text-white/90">Farm Animals</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-xs md:text-sm">
+                  <span className="text-white font-bold">✓</span>
+                  <span className="text-white/90">Organic Gardens</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-xs md:text-sm">
+                  <span className="text-white font-bold">✓</span>
+                  <span className="text-white/90">Day Visits</span>
                 </div>
               </div>
 
               {/* CTA */}
               <Link
                 href="/farmhouse"
-                className="inline-flex items-center gap-2 bg-[#849826] hover:bg-[#6f811f] text-white px-4 py-2 rounded text-xs md:text-sm font-semibold transition-colors w-fit"
+                className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-[#849826] px-4 md:px-5 py-2 md:py-2.5 rounded text-xs md:text-sm font-semibold transition-colors w-fit"
               >
                 Explore Farm House
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,6 +66,18 @@ export default function FarmHouseSection() {
                 </svg>
               </Link>
             </div>
+          </div>
+
+          {/* Right Side - Large Image */}
+          <div className="relative min-h-[200px] sm:min-h-[280px] lg:min-h-[340px] bg-gradient-to-br from-gray-900 to-gray-800">
+            <Image
+              src="/farmhouse/1.webp"
+              alt="The Farm House"
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </div>
         </div>
       </div>

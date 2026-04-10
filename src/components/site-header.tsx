@@ -163,6 +163,7 @@ export default function SiteHeader() {
             width={180}
             height={80}
             priority
+            quality={85}
             className="h-10 sm:h-9 lg:h-10 xl:h-12 2xl:h-14 w-auto block transition-all duration-500"
           />
         </Link>
@@ -233,6 +234,7 @@ export default function SiteHeader() {
             width={220}
             height={100}
             priority
+            quality={90}
             className="h-10 sm:h-9 md:h-10 lg:h-14 xl:h-16 2xl:h-20 w-auto object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)]"
           />
           <Image
@@ -241,6 +243,7 @@ export default function SiteHeader() {
             width={220}
             height={100}
             priority
+            quality={90}
             className="h-8 sm:h-9 md:h-8 lg:h-12 xl:h-14 2xl:h-18 w-auto object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)]"
           />
 

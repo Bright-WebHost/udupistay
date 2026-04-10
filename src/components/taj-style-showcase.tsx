@@ -99,6 +99,8 @@ export default function HomestaysStickyScroll() {
                     fill
                     className="object-cover transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, 600px"
+                    quality={85}
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   
@@ -202,6 +204,8 @@ export default function HomestaysStickyScroll() {
                       className="object-cover transition-transform duration-700"
                       sizes="100vw"
                       priority={index === 0}
+                      quality={85}
+                      loading={index === 0 ? "eager" : "lazy"}
                     />
                   </div>
                   

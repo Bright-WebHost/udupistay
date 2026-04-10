@@ -53,8 +53,15 @@ function ScrollRow({ items, direction, speed, cardW }: {
             position: "relative", borderRadius: 5,
             overflow: "hidden", background: "#c8c4b8",
           }}>
-            <Image src={item.src} alt="" fill quality={90}
-              style={{ objectFit: "cover" }} />
+            <Image 
+              src={item.src} 
+              alt="" 
+              fill 
+              quality={85}
+              loading="lazy"
+              sizes={`${cardW}px`}
+              style={{ objectFit: "cover" }} 
+            />
           </div>
         ))}
       </div>
