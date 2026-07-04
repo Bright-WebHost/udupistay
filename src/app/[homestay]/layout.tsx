@@ -22,16 +22,29 @@ export async function generateMetadata({
     };
   }
 
+  const isHomestay = stay.rooms > 0;
+  const title = isHomestay 
+    ? `${stay.title} - Premium Homestay in Udupi, Karnataka`
+    : `${stay.title} - Premium Pool Area & Outdoor Retreat in Udupi, Karnataka`;
+
+  const description = isHomestay
+    ? `${stay.description} Accommodates ${stay.guests} guests with ${stay.rooms} bedrooms and ${stay.bathrooms} bathrooms. Located near Malpe Beach, Krishna Temple, and Manipal University.`
+    : `${stay.description} Accommodates up to ${stay.guests} guests with ${stay.bathrooms} bathrooms. Located near Udupi & Manipal, Karnataka.`;
+
+  const ogTitle = isHomestay
+    ? `${stay.title} - Homestay in Udupi`
+    : `${stay.title} - Pool Area & Outdoor Retreat in Udupi`;
+
   return {
-    title: `${stay.title} - Premium Homestay in Udupi, Karnataka`,
-    description: `${stay.description} Accommodates ${stay.guests} guests with ${stay.rooms} bedrooms and ${stay.bathrooms} bathrooms. Located near Malpe Beach, Krishna Temple, and Manipal University.`,
+    title,
+    description,
     keywords: [stay.title, "Udupi homestay", "family stay", "vacation rental"],
     alternates: {
       canonical: `https://udupistay.com/${stay.route}`,
     },
     openGraph: {
-      title: `${stay.title} - Homestay in Udupi`,
-      description: `${stay.longDescription}`,
+      title: ogTitle,
+      description: stay.longDescription,
       type: "website",
       url: `https://udupistay.com/${stay.route}`,
       images: [
@@ -45,8 +58,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${stay.title} - Homestay in Udupi`,
-      description: `${stay.description}`,
+      title: ogTitle,
+      description: stay.description,
       images: [`https://udupistay.com${stay.image}`],
     },
   };

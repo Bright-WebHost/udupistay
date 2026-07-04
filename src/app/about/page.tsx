@@ -117,10 +117,10 @@ export default function AboutPage() {
   const onMouseUp = () => { isDraggingRef.current = false; };
 
   const cards = [
-    { title: "Prime Location", desc: "Near cultural landmarks and pristine beaches", number: "01", image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80" },
-    { title: "Authentic Experience", desc: "Genuine Karnataka hospitality rooted in tradition", number: "02", image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80" },
-    { title: "Modern Comfort", desc: "Contemporary amenities with traditional elegance", number: "03", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" },
-    { title: "Peaceful Retreats", desc: "Serene environments perfect for relaxation", number: "04", image: "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=80" },
+    { title: "Prime Location", desc: "Near cultural landmarks and pristine beaches", number: "01", image: "/prime.jpg" },
+    { title: "Authentic Experience", desc: "Genuine Karnataka hospitality rooted in tradition", number: "02", image: "/authentic-exp.png" },
+    { title: "Modern Comfort", desc: "Contemporary amenities with traditional elegance", number: "03", image: "/luxury.avif" },
+    { title: "Peaceful Retreats", desc: "Serene environments perfect for relaxation", number: "04", image: "/peaceful.png" },
   ];
 
   const services = [
@@ -615,12 +615,12 @@ export default function AboutPage() {
         </div>
 
         {/* Stats */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-          <div data-animate="why-stats" className={`grid grid-cols-1 sm:grid-cols-3 gap-6 text-center stagger ${visibleSections.has('why-stats') ? 'visible' : ''}`}>
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 mt-16">
+          <div data-animate="why-stats" className={`grid grid-cols-3 gap-2 sm:gap-6 text-center stagger ${visibleSections.has('why-stats') ? 'visible' : ''}`}>
             {[["4.9/5","Guest Rating"],["98%","Guest Satisfaction"],["24/7","Support Available"]].map(([val,label],i)=>(
-              <div key={i} className="bg-white p-6 sm:p-8 shadow-md rounded-xl">
-                <div className="text-[#849826] text-3xl sm:text-4xl font-serif font-bold mb-2">{val}</div>
-                <p className="text-gray-600 text-xs sm:text-sm">{label}</p>
+              <div key={i} className="bg-white p-3 sm:p-8 shadow-md rounded-xl">
+                <div className="text-[#849826] text-lg sm:text-4xl font-serif font-bold mb-1 sm:mb-2">{val}</div>
+                <p className="text-gray-600 text-[10px] sm:text-sm leading-tight">{label}</p>
               </div>
             ))}
           </div>

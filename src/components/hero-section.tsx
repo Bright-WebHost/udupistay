@@ -11,7 +11,7 @@ export default function HeroSection() {
   const idleTimerRef = useRef<NodeJS.Timeout | null>(null);
   const isInteractiveRef = useRef(true);
 
-  // 7 Homestays total
+  // 8 Homestays total
   const facilities = [
     { img: "/whitehouse/new/1.webp", title: "White House" },
     { img: "/gradernVilla/new/1.webp", title: "Garden Villa" },
@@ -20,6 +20,7 @@ export default function HeroSection() {
     { img: "/sunrise/new/1.webp", title: "Sunrise Home" },
     { img: "/chalet/new/1.webp", title: "Chalet La Bonne Vie" },
     { img: "/view/new/1.webp", title: "Viewpoint" },
+    { img: "/hillside-cottage.png", title: "Hill Side Cottage" },
   ];
 
   useEffect(() => {

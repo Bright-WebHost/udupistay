@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -78,6 +78,9 @@ const homestayImages: Record<string, string[]> = {
     "/view/new/_DSC3560.webp", "/view/new/_DSC3565.webp",
     "/view/new/_DSC3591.webp",
   ],
+  hillsidecottage: [
+    "/hillside-cottage.png"
+  ],
 };
 
 const homestayMeta: Record<string, { tags: string[] }> = {
@@ -88,6 +91,7 @@ const homestayMeta: Record<string, { tags: string[] }> = {
   sunrisehome:   { tags: ["Sunrise View",      "Cozy Interiors",  "Budget Friendly"]  },
   chaletlabonne: { tags: ["Bird Sanctuary",    "Farm Access",     "Nature Immersion"] },
   viewpoint:     { tags: ["Jacuzzi",           "BBQ Area",        "Scenic Views"]     },
+  hillsidecottage: { tags: ["Hillside View", "Cozy Cottage", "Budget Friendly"] },
 };
 
 // Lookup key: lowercase the route string, strip spaces
@@ -346,14 +350,22 @@ export default function HomestayPage() {
                           <div className="flex items-center gap-2 md:gap-3 text-[10px] md:text-xs">
                             <span className="flex items-center gap-1">
                               <svg className="w-2 h-2 opacity-80" viewBox="0 0 8 8" fill="currentColor"><polygon points="4,0 8,4 4,8 0,4" /></svg>
-                              {h.rooms} Rooms
+                              {h.rooms > 0 
+                                ? `${h.rooms} Rooms` 
+                                : h.id === "farmhouse" 
+                                  ? "Farm Visit" 
+                                  : "Pool Area"}
                             </span>
-                            <span className="flex items-center gap-1">
-                              <svg className="w-2 h-2 opacity-80" viewBox="0 0 8 8" fill="currentColor"><polygon points="4,0 8,4 4,8 0,4" /></svg>
-                              {h.guests} Guests
-                            </span>
+                            {h.guests > 0 && (
+                              <span className="flex items-center gap-1">
+                                <svg className="w-2 h-2 opacity-80" viewBox="0 0 8 8" fill="currentColor"><polygon points="4,0 8,4 4,8 0,4" /></svg>
+                                {h.guests} Guests
+                              </span>
+                            )}
                           </div>
-                          <span className="text-[10px] md:text-xs opacity-80 tracking-wider uppercase">{h.bathrooms} Baths</span>
+                          {h.bathrooms > 0 && (
+                            <span className="text-[10px] md:text-xs opacity-80 tracking-wider uppercase">{h.bathrooms} Baths</span>
+                          )}
                         </div>
                       </div>
 
@@ -396,7 +408,7 @@ export default function HomestayPage() {
           <div className="text-center mt-10 md:mt-12">
             <Link
               href="/homestays"
-              className="inline-flex items-center gap-2 md:gap-3 text-xs md:text-sm uppercase tracking-[0.2em] text-[#849826] font-semibold border border-[#849826] px-6 md:px-8 py-2.5 md:py-3 rounded-full hover:bg-[#849826] hover:text-white transition-all duration-300"
+              className="inline-flex items-center gap-2 md:gap-3 text-xs md:text-sm uppercase tracking-[0.2em] text-black md:text-[#849826] font-semibold border border-[#849826] px-6 md:px-8 py-2.5 md:py-3 rounded-full hover:bg-[#849826] hover:text-white transition-all duration-300"
             >
               View All Homestays <span>→</span>
             </Link>

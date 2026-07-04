@@ -196,8 +196,8 @@ export const homestays: Homestay[] = [
     subtitle: "3BHK Brick House",
     route: "SunriseHome",
     image: "/sunrise/new/1.webp",
-    description: "Affordable 2BHK family homestay in Udupi, accommodating up to 6 guests with 3 bathrooms and cozy interiors.",
-    longDescription: "Sunrise Home is an affordable family homestay in Udupi, Karnataka with 2 bedrooms and 3 bathrooms for guests who prefer a private, quiet setting. With comfortable rooms and practical amenities, it is ideal for travelers searching for a budget-friendly Udupi homestay near Manipal and local dining spots.",
+    description: "Affordable 3BHK family homestay in Udupi, accommodating up to 6 guests with 3 bathrooms and cozy interiors.",
+    longDescription: "Sunrise Home is an affordable family homestay in Udupi, Karnataka with 3 bedrooms and 3 bathrooms for guests who prefer a private, quiet setting. With comfortable rooms and practical amenities, it is ideal for travelers searching for a budget-friendly Udupi homestay near Manipal and local dining spots.",
     amenities: [
       "Fully furnished",
       "Complete kitchen",
@@ -209,14 +209,14 @@ export const homestays: Homestay[] = [
       "Basic amenities"
     ],
     features: [
-      "2 bedrooms",
+      "3 bedrooms",
       "3 bathrooms",
       "Brick construction",
       "Modern design",
       "Spacious rooms",
       "Well-lit interiors"
     ],
-    rooms: 2,
+    rooms: 3,
     guests: 6,
     bathrooms: 3,
     highlights: [
@@ -279,17 +279,17 @@ export const homestays: Homestay[] = [
   {
     id: "viewpoint-oasis",
     title: "VIEWPOINT OASIS",
-    subtitle: "Premium Retreat with Facilities",
+    subtitle: "Premium Pool & Outdoor Retreat",
     route: "ViewPoint",
     image: "/view/new/1.webp",
-    description: "Premium Udupi homestay with stunning viewpoints, swimming pool, BBQ counter, and jacuzzi for group celebrations.",
-    longDescription: "Viewpoint Oasis is a premium homestay in Udupi with standout features including scenic viewpoints, swimming pool, and dedicated BBQ counter for group gatherings. Perfect for celebrations and upscale weekend escapes, this property suits guests looking for the best homestay in Udupi with comfort, privacy, and modern amenities.",
+    description: "Premium Udupi pool area and outdoor retreat with stunning viewpoints, swimming pool, BBQ counter, and jacuzzi for group celebrations.",
+    longDescription: "Viewpoint Oasis is a premium pool area and outdoor retreat in Udupi with standout features including scenic viewpoints, swimming pool, and dedicated BBQ counter for group gatherings. Perfect for celebrations and upscale weekend escapes, this property suits guests looking for the best private pool area and outdoor gathering spot in Udupi with comfort, privacy, and modern amenities.",
     amenities: [
       "Scenic viewpoints",
       "Swimming pool",
       "BBQ counter",
       "Jacuzzi facility",
-      "Fully furnished",
+      "Outdoor deck & seating",
       "Kitchen facilities",
       "Dining area",
       "Parking & security"
@@ -302,7 +302,7 @@ export const homestays: Homestay[] = [
       "Jacuzzi setup",
       "Modern facilities"
     ],
-    rooms: 3,
+    rooms: 0,
     guests: 12,
     bathrooms: 2,
     highlights: [
@@ -318,7 +318,48 @@ export const homestays: Homestay[] = [
       "Entertainment zones",
       "Social venues"
     ]
-  }
+  },
+  {
+    id: "hillsidecottage",
+    title: "HILL SIDE COTTAGE",
+    subtitle: "Cozy 1BHK Hillside Retreat",
+    route: "HillSideCottage",
+    image: "/hillside-cottage.png",
+    description: "Charming 1BHK cottage nestled on a quiet hillside, offering a cozy escape for up to 3 guests with premium nature views.",
+    longDescription: "Hill Side Cottage is a peaceful 1-bedroom retreat surrounded by scenic vistas, perfect for couples or small families seeking a quiet weekend getaway in Udupi. With modern amenities, a cozy atmosphere, and close proximity to nature trails, it represents one of the best budget-friendly nature escapes in Karnataka.",
+    amenities: [
+      "Scenic hillside views",
+      "Air conditioning",
+      "Fully furnished living space",
+      "Equipped kitchen area",
+      "High-speed Wi-Fi",
+      "Parking space",
+      "Outdoor seating deck"
+    ],
+    features: [
+      "1 bedroom",
+      "1 bathroom",
+      "Private balcony/deck",
+      "Modern amenities",
+      "Tranquil environment"
+    ],
+    rooms: 1,
+    guests: 3,
+    bathrooms: 1,
+    highlights: [
+      "Hillside views",
+      "Quiet nature setting",
+      "Cozy 1BHK layout",
+      "Budget friendly"
+    ],
+    location: "Near Udupi (8 km) & Manipal (12 km), Karnataka",
+    nearbyAttractions: [
+      "Hiking trails",
+      "Local view points",
+      "Serene forest reserves",
+      "Village tours"
+    ]
+  },
 ];
 
 export const getHomestayByRoute = (route: string) => {

@@ -486,16 +486,18 @@ export default function ExploreSection({ title, rooms, bathrooms, guests }: Expl
               gap: "24px 30px",
             }}
           >
-            {polaroidMeta.map((meta, i) => (
-              // On desktop: normal wrapper with staggered margin
-              // On mobile: .polaroid-scale-wrap shrinks to 70px wide,
-              //            .polaroid-scale-inner applies scale(0.44)
-              <div key={meta.key} className="polaroid-scale-wrap" style={{ marginBottom: [0, 20, 8, 14][i] }}>
-                <div className="polaroid-scale-inner">
-                  <PolaroidCard meta={meta} value={statValues[meta.key]} index={i} isVisible={isVisible} />
+            {polaroidMeta
+              .filter((meta) => meta.key !== "bedrooms" || rooms > 0)
+              .map((meta, i) => (
+                // On desktop: normal wrapper with staggered margin
+                // On mobile: .polaroid-scale-wrap shrinks to 70px wide,
+                //            .polaroid-scale-inner applies scale(0.44)
+                <div key={meta.key} className="polaroid-scale-wrap" style={{ marginBottom: [0, 20, 8, 14][i] }}>
+                  <div className="polaroid-scale-inner">
+                    <PolaroidCard meta={meta} value={statValues[meta.key]} index={i} isVisible={isVisible} />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
 
         </div>

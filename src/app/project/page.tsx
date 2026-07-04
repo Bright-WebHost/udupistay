@@ -27,6 +27,10 @@ const homestays = [
     title: "VIEWPOINT OASIS",
     details: "Near Udupi (7 km) & Manipal (15 km) · Jacuzzi, View Point, BBQ Area",
   },
+  {
+    title: "HILL SIDE COTTAGE",
+    details: "1 to 3 Capacity · Near Udupi (8 km) & Manipal (12 km) · Cozy 1-BHK Hillside Retreat",
+  },
 ];
 
 export default function ProjectPage() {

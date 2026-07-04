@@ -58,7 +58,7 @@ export default function FarmHouseSection() {
               {/* CTA */}
               <Link
                 href="/farmhouse"
-                className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-[#849826] px-4 md:px-5 py-2 md:py-2.5 rounded text-xs md:text-sm font-semibold transition-colors w-fit"
+                className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-black px-4 md:px-5 py-2 md:py-2.5 rounded text-xs md:text-sm font-semibold transition-colors w-fit"
               >
                 Explore Farm House
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

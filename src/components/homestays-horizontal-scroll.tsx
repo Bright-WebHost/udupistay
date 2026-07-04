@@ -9,13 +9,14 @@ import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 const homestays = [
-  { id: 1, name: "WHITE HOUSE", image: "whitehouse/new/1.webp", rooms: 6, guests: 35, route: "/Whitehouse" },
-  { id: 2, name: "GARDEN VILLA", image: "gradernVilla/new/1.webp", rooms: 5, guests: 20, route: "/GardenVilla" },
-  { id: 3, name: "COTTAGE HOUSE", image: "Cottage/new/1.webp", rooms: 3, guests: 15, route: "/CottageHouse" },
-  { id: 4, name: "HILL TOP VILLA", image: "hilltop/new/1.webp", rooms: 4, guests: 25, route: "/TopVilla" },
-  { id: 5, name: "SUNRISE HOME", image: "sunrise/new/1.webp", rooms: 4, guests: 18, route: "/SunriseHome" },
-  { id: 6, name: "CHALET LA BONNE VIE", image: "chalet/new/1.webp", rooms: 5, guests: 20, route: "/ChaletLabonne" },
-  { id: 7, name: "VIEWPOINT OASIS", image: "view/new/1.webp", rooms: 4, guests: 22, route: "/ViewPoint" },
+  { id: 1, name: "WHITE HOUSE", image: "whitehouse/new/1.webp", rooms: 6, guests: 35, route: "Whitehouse" },
+  { id: 2, name: "GARDEN VILLA", image: "gradernVilla/new/1.webp", rooms: 5, guests: 20, route: "GardenVilla" },
+  { id: 3, name: "COTTAGE HOUSE", image: "Cottage/new/1.webp", rooms: 3, guests: 15, route: "CottageHouse" },
+  { id: 4, name: "HILL TOP VILLA", image: "hilltop/new/1.webp", rooms: 4, guests: 25, route: "TopVilla" },
+  { id: 5, name: "SUNRISE HOME", image: "sunrise/new/1.webp", rooms: 3, guests: 6, route: "SunriseHome" },
+  { id: 6, name: "CHALET LA BONNE VIE", image: "chalet/new/1.webp", rooms: 2, guests: 5, route: "ChaletLabonne" },
+  { id: 7, name: "VIEWPOINT OASIS", image: "view/new/1.webp", rooms: 0, guests: 22, route: "ViewPoint" },
+  { id: 8, name: "HILL SIDE COTTAGE", image: "hillside-cottage.png", rooms: 1, guests: 3, route: "HillSideCottage" },
 ];
 
 export default function HomestaysHorizontalScroll() {
@@ -152,8 +153,12 @@ export default function HomestaysHorizontalScroll() {
                   </h3>
 
                   <div className="flex gap-4 mb-5 text-white text-sm">
-                    <span>{homestay.rooms} Rooms</span>
-                    <span>Up to {homestay.guests}</span>
+                    {homestay.rooms > 0 ? (
+                      <span>{homestay.rooms} Rooms</span>
+                    ) : (
+                      <span>Pool Area</span>
+                    )}
+                    <span>Up to {homestay.guests} Guests</span>
                   </div>
 
                   <div className="w-full py-3 px-6 font-bold text-white uppercase text-xs tracking-wider rounded-lg bg-[#849826] hover:bg-[#6d7d1f] transition text-center">

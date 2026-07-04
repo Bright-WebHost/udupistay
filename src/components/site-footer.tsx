@@ -182,7 +182,7 @@ export default function SiteFooter() {
 
               {/* Copyright */}
               <div className="text-gray-400 text-xs md:text-sm order-3 text-center md:text-left">
-                Copyright 2025 <span className="text-white font-medium">UdupiStay</span> - Design By Bright Media
+                Copyright 2025 <span className="text-white font-medium">Udupi Home Stay</span> - Design By <a href="https://brightmedia.tech/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Bright Media</a>
               </div>
             </div>
           </div>

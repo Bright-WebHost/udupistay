@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
 import { useIsMobile } from '@/lib/useIsMobile';
 
 export default function CustomCursor() {
@@ -19,10 +18,9 @@ export default function CustomCursor() {
     const dotsEl = dotsRef.current;
     const touchIndicatorEl = touchIndicatorRef.current;
     const touchRippleEl = touchRippleRef.current;
-    
-    if (!outerEl || !innerEl) return;
 
     if (isMobile) {
+      if (!touchIndicatorEl || !touchRippleEl) return;
       // ═══════════════ MOBILE TOUCH EXPERIENCE ═══════════════
       let touchX = 0;
       let touchY = 0;
@@ -33,51 +31,19 @@ export default function CustomCursor() {
           touchX = touch.clientX;
           touchY = touch.clientY;
 
-          if (touchIndicatorEl) {
-            // Premium glow effect on touch
-            gsap.to(touchIndicatorEl, {
-              x: touchX,
-              y: touchY,
-              xPercent: -50,
-              yPercent: -50,
-              opacity: 1,
-              scale: 1,
-              duration: 0.15,
-              ease: 'power3.out',
-            });
-          }
+          touchIndicatorEl.style.left = `${touchX}px`;
+          touchIndicatorEl.style.top = `${touchY}px`;
+          touchIndicatorEl.style.transform = 'translate3d(-50%, -50%, 0) scale(1)';
+          touchIndicatorEl.style.opacity = '1';
 
-          if (touchRippleEl) {
-            // Multiple ripple waves for premium effect
-            gsap.set(touchRippleEl, {
-              x: touchX,
-              y: touchY,
-              xPercent: -50,
-              yPercent: -50,
-              opacity: 0.8,
-              scale: 0.3,
-            });
-            
-            // First ripple
-            gsap.to(touchRippleEl, {
-              scale: 1.5,
-              opacity: 0,
-              duration: 0.8,
-              ease: 'power2.out',
-            });
+          touchRippleEl.style.left = `${touchX}px`;
+          touchRippleEl.style.top = `${touchY}px`;
+          touchRippleEl.style.transform = 'translate3d(-50%, -50%, 0) scale(0.3)';
+          touchRippleEl.style.opacity = '0.8';
 
-            // Second delayed ripple
-            gsap.fromTo(touchRippleEl, 
-              { scale: 0.5, opacity: 0.5 },
-              { 
-                scale: 2, 
-                opacity: 0, 
-                duration: 1,
-                delay: 0.1,
-                ease: 'power2.out',
-              }
-            );
-          }
+          touchRippleEl.classList.remove('ripple-anim');
+          void touchRippleEl.offsetWidth; // force reflow
+          touchRippleEl.classList.add('ripple-anim');
         }
       };
 
@@ -86,30 +52,14 @@ export default function CustomCursor() {
           const touch = e.touches[0];
           touchX = touch.clientX;
           touchY = touch.clientY;
-
-          if (touchIndicatorEl) {
-            gsap.to(touchIndicatorEl, {
-              x: touchX,
-              y: touchY,
-              xPercent: -50,
-              yPercent: -50,
-              duration: 0.05,
-              ease: 'power3.out',
-              overwrite: true,
-            });
-          }
+          touchIndicatorEl.style.left = `${touchX}px`;
+          touchIndicatorEl.style.top = `${touchY}px`;
         }
       };
 
       const handleTouchEnd = () => {
-        if (touchIndicatorEl) {
-          gsap.to(touchIndicatorEl, {
-            opacity: 0,
-            scale: 0.3,
-            duration: 0.4,
-            ease: 'power3.in',
-          });
-        }
+        touchIndicatorEl.style.transform = 'translate3d(-50%, -50%, 0) scale(0.3)';
+        touchIndicatorEl.style.opacity = '0';
       };
 
       document.addEventListener('touchstart', handleTouchStart, { passive: true });
@@ -122,209 +72,122 @@ export default function CustomCursor() {
         document.removeEventListener('touchend', handleTouchEnd);
       };
     } else {
+      if (!outerEl || !innerEl || !dotsEl) return;
       // ═══════════════ DESKTOP PREMIUM CURSOR ═══════════════
-      let mouseX = 0;
-      let mouseY = 0;
-      let currentScale = 1;
+      let mouseX = typeof window !== 'undefined' ? window.innerWidth / 2 : 0;
+      let mouseY = typeof window !== 'undefined' ? window.innerHeight / 2 : 0;
+      
+      let currentX = mouseX;
+      let currentY = mouseY;
+      let outerX = mouseX;
+      let outerY = mouseY;
+      let dotsX = mouseX;
+      let dotsY = mouseY;
+
+      let isHovered = false;
+      let isMouseDown = false;
+      let magneticEl: HTMLElement | null = null;
 
       const handleMouseMove = (e: MouseEvent) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        // Always show cursor on movement
-        gsap.to([outerEl, innerEl, dotsEl], {
-          opacity: 1,
-          duration: 0.2,
-          overwrite: true,
-        });
 
-        // Universal fallback: force cursor elements visible/displayed
-        [outerEl, innerEl, dotsEl].forEach(el => {
-          if (el) {
+        const target = e.target as HTMLElement | null;
+        magneticEl = target ? target.closest('[data-magnetic]') : null;
+
+        if (!isHovered) {
+          isHovered = true;
+          [outerEl, innerEl, dotsEl].forEach(el => {
             el.style.opacity = '1';
             el.style.display = 'block';
             el.style.visibility = 'visible';
-          }
-        });
+          });
+        }
+      };
 
-        // Check for magnetic elements
-        const magneticElements = document.querySelectorAll('[data-magnetic]');
-        let isMagnetic = false;
+      let animationFrameId: number;
 
-        magneticElements.forEach((el) => {
-          const rect = el.getBoundingClientRect();
+      const updatePosition = () => {
+        let targetX = mouseX;
+        let targetY = mouseY;
+
+        // Optimized magnetic pull calculation
+        if (magneticEl) {
+          const rect = magneticEl.getBoundingClientRect();
           const centerX = rect.left + rect.width / 2;
           const centerY = rect.top + rect.height / 2;
           const distance = Math.sqrt(
             Math.pow(mouseX - centerX, 2) + Math.pow(mouseY - centerY, 2)
           );
 
-          // Magnetic attraction radius
           if (distance < 120) {
-            isMagnetic = true;
             const pullX = (centerX - mouseX) * 0.3;
             const pullY = (centerY - mouseY) * 0.3;
-
-            gsap.to(innerEl, {
-              x: mouseX + pullX,
-              y: mouseY + pullY,
-              xPercent: -50,
-              yPercent: -50,
-              duration: 0.3,
-              ease: 'power3.out',
-            });
-
-            gsap.to(outerEl, {
-              x: mouseX + pullX * 0.5,
-              y: mouseY + pullY * 0.5,
-              xPercent: -50,
-              yPercent: -50,
-              duration: 0.5,
-              ease: 'power3.out',
-            });
+            targetX = mouseX + pullX;
+            targetY = mouseY + pullY;
           }
-        });
-
-        if (!isMagnetic) {
-          // Normal smooth follow
-          gsap.to(innerEl, {
-            x: mouseX,
-            y: mouseY,
-            xPercent: -50,
-            yPercent: -50,
-            duration: 0.1,
-            ease: 'power3.out',
-            overwrite: true,
-          });
-
-          gsap.to(outerEl, {
-            x: mouseX,
-            y: mouseY,
-            xPercent: -50,
-            yPercent: -50,
-            duration: 0.4,
-            ease: 'power3.out',
-            overwrite: true,
-          });
         }
 
-        // Dots trail effect
-        if (dotsEl) {
-          gsap.to(dotsEl, {
-            x: mouseX,
-            y: mouseY,
-            xPercent: -50,
-            yPercent: -50,
-            duration: 0.8,
-            ease: 'power3.out',
-            overwrite: true,
-          });
+        // Extremely smooth Lerp coordinate updates
+        currentX += (targetX - currentX) * 0.3;
+        currentY += (targetY - currentY) * 0.3;
+
+        outerX += (targetX - outerX) * 0.15;
+        outerY += (targetY - outerY) * 0.15;
+
+        dotsX += (targetX - dotsX) * 0.08;
+        dotsY += (targetY - dotsY) * 0.08;
+
+        // Performant direct layout position updates
+        innerEl.style.left = `${currentX}px`;
+        innerEl.style.top = `${currentY}px`;
+        if (isMouseDown) {
+          innerEl.style.transform = 'translate3d(-55%, -55%, 0) scale(0.5)';
+        } else {
+          innerEl.style.transform = 'translate3d(-50%, -50%, 0) scale(1)';
         }
+
+        outerEl.style.left = `${outerX}px`;
+        outerEl.style.top = `${outerY}px`;
+
+        dotsEl.style.left = `${dotsX}px`;
+        dotsEl.style.top = `${dotsY}px`;
+
+        animationFrameId = requestAnimationFrame(updatePosition);
       };
 
+      animationFrameId = requestAnimationFrame(updatePosition);
+
       const handleMouseDown = () => {
-        currentScale = 0.75;
-        gsap.to(outerEl, {
-          scale: 0.75,
-          borderWidth: '3px',
-          duration: 0.2,
-          ease: 'power3.out',
-          overwrite: 'auto',
-        });
-        gsap.to(innerEl, {
-          scale: 0.5,
-          duration: 0.2,
-          ease: 'power3.out',
-          overwrite: 'auto',
-        });
+        isMouseDown = true;
+        outerEl.classList.add('cursor-mousedown');
       };
 
       const handleMouseUp = () => {
-        currentScale = 1;
-        gsap.to(outerEl, {
-          scale: 1,
-          borderWidth: '2px',
-          duration: 0.3,
-          ease: 'elastic.out(1, 0.3)',
-          overwrite: 'auto',
-        });
-        gsap.to(innerEl, {
-          scale: 1,
-          duration: 0.3,
-          ease: 'elastic.out(1, 0.3)',
-          overwrite: 'auto',
-        });
+        isMouseDown = false;
+        outerEl.classList.remove('cursor-mousedown');
       };
 
       const handleOver = (e: MouseEvent) => {
         const target = e.target as HTMLElement | null;
         if (!target) return;
 
-        // Links and buttons
         if (target.closest('a, button')) {
-          gsap.to(outerEl, {
-            scale: 2,
-            borderColor: '#849826',
-            backgroundColor: 'rgba(132, 152, 38, 0.1)',
-            duration: 0.3,
-            ease: 'power3.out',
-            overwrite: 'auto',
-          });
-          gsap.to(innerEl, {
-            scale: 0,
-            duration: 0.3,
-            ease: 'power3.out',
-            overwrite: 'auto',
-          });
+          outerEl.classList.add('cursor-hover-link');
+          innerEl.classList.add('cursor-hover-link-inner');
         }
-
-        // Input fields
         if (target.closest('input, textarea')) {
-          gsap.to(outerEl, {
-            scale: 1.5,
-            borderColor: '#849826',
-            duration: 0.3,
-            ease: 'power3.out',
-            overwrite: 'auto',
-          });
+          outerEl.classList.add('cursor-hover-input');
         }
-
-        // Images
         if (target.closest('img')) {
-          gsap.to(outerEl, {
-            scale: 2.5,
-            borderWidth: '1px',
-            borderColor: '#849826',
-            duration: 0.3,
-            ease: 'power3.out',
-            overwrite: 'auto',
-          });
-          gsap.to(innerEl, {
-            scale: 1.5,
-            backgroundColor: 'rgba(132, 152, 38, 0.5)',
-            duration: 0.3,
-            ease: 'power3.out',
-            overwrite: 'auto',
-          });
+          outerEl.classList.add('cursor-hover-image');
+          innerEl.classList.add('cursor-hover-image-inner');
         }
-
-        // Check for data-cursor-text attribute
         const textAttr = target.closest('[data-cursor-text]')?.getAttribute('data-cursor-text');
         if (textAttr) {
           setCursorText(textAttr);
-          gsap.to(outerEl, {
-            scale: 3,
-            backgroundColor: 'rgba(132, 152, 38, 0.95)',
-            borderColor: '#849826',
-            duration: 0.3,
-            ease: 'power3.out',
-            overwrite: 'auto',
-          });
-          gsap.to(innerEl, {
-            scale: 0,
-            duration: 0.3,
-            ease: 'power3.out',
-            overwrite: 'auto',
-          });
+          outerEl.classList.add('cursor-hover-text');
+          innerEl.classList.add('cursor-hover-text-inner');
         }
       };
 
@@ -332,63 +195,56 @@ export default function CustomCursor() {
         const target = e.target as HTMLElement | null;
         if (!target) return;
 
-        setCursorText('');
-
-        if (target.closest('a, button, input, textarea, img, [data-cursor-text]')) {
-          gsap.to(outerEl, {
-            scale: currentScale,
-            borderColor: 'rgba(132, 152, 38, 0.5)',
-            backgroundColor: 'transparent',
-            borderWidth: '2px',
-            duration: 0.3,
-            ease: 'power3.out',
-            overwrite: 'auto',
-          });
-          gsap.to(innerEl, {
-            scale: currentScale,
-            backgroundColor: '#849826',
-            duration: 0.3,
-            ease: 'power3.out',
-            overwrite: 'auto',
-          });
+        if (target.closest('a, button')) {
+          outerEl.classList.remove('cursor-hover-link');
+          innerEl.classList.remove('cursor-hover-link-inner');
+        }
+        if (target.closest('input, textarea')) {
+          outerEl.classList.remove('cursor-hover-input');
+        }
+        if (target.closest('img')) {
+          outerEl.classList.remove('cursor-hover-image');
+          innerEl.classList.remove('cursor-hover-image-inner');
+        }
+        const textAttr = target.closest('[data-cursor-text]')?.getAttribute('data-cursor-text');
+        if (textAttr) {
+          setCursorText('');
+          outerEl.classList.remove('cursor-hover-text');
+          innerEl.classList.remove('cursor-hover-text-inner');
         }
       };
 
-      // Hide/show cursor when leaving window
       const handleMouseLeave = () => {
-        gsap.to([outerEl, innerEl, dotsEl], {
-          opacity: 0,
-          duration: 0.3,
+        isHovered = false;
+        [outerEl, innerEl, dotsEl].forEach(el => {
+          el.style.opacity = '0';
         });
       };
 
       const handleMouseEnter = () => {
-        gsap.to([outerEl, innerEl, dotsEl], {
-          opacity: 1,
-          duration: 0.3,
+        isHovered = true;
+        [outerEl, innerEl, dotsEl].forEach(el => {
+          el.style.opacity = '1';
         });
       };
 
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mousedown', handleMouseDown);
-      document.addEventListener('mouseup', handleMouseUp);
-      document.addEventListener('mouseover', handleOver);
-      document.addEventListener('mouseout', handleOut);
-      document.addEventListener('mouseleave', handleMouseLeave);
-      document.addEventListener('mouseenter', handleMouseEnter);
+      document.addEventListener('mousemove', handleMouseMove, { passive: true });
+      document.addEventListener('mousedown', handleMouseDown, { passive: true });
+      document.addEventListener('mouseup', handleMouseUp, { passive: true });
+      document.addEventListener('mouseover', handleOver, { passive: true });
+      document.addEventListener('mouseout', handleOut, { passive: true });
+      document.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+      document.addEventListener('mouseenter', handleMouseEnter, { passive: true });
 
       // Initialize position
-      if (typeof window !== 'undefined') {
-        gsap.set([outerEl, innerEl, dotsEl], {
-          x: window.innerWidth / 2,
-          y: window.innerHeight / 2,
-          xPercent: -50,
-          yPercent: -50,
-          opacity: 1,
-        });
-      }
+      [outerEl, innerEl, dotsEl].forEach(el => {
+        el.style.left = `${mouseX}px`;
+        el.style.top = `${mouseY}px`;
+        el.style.opacity = '0';
+      });
 
       return () => {
+        cancelAnimationFrame(animationFrameId);
         document.removeEventListener('mousemove', handleMouseMove);
         document.removeEventListener('mousedown', handleMouseDown);
         document.removeEventListener('mouseup', handleMouseUp);
@@ -446,8 +302,14 @@ export default function CustomCursor() {
           border-radius: 50%;
           pointer-events: none;
           z-index: 99999;
-          transition: border-color 0.3s ease;
+          transform: translate3d(-50%, -50%, 0);
+          transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                      height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                      border-color 0.3s ease, 
+                      background-color 0.3s ease,
+                      border-width 0.3s ease;
           backdrop-filter: blur(2px);
+          will-change: left, top;
         }
 
         .cursor-inner {
@@ -461,6 +323,9 @@ export default function CustomCursor() {
           pointer-events: none;
           z-index: 99999;
           box-shadow: 0 0 10px rgba(132, 152, 38, 0.5);
+          transform: translate3d(-50%, -50%, 0);
+          transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
+          will-change: left, top, transform;
         }
 
         .cursor-dots {
@@ -471,6 +336,8 @@ export default function CustomCursor() {
           height: 4px;
           pointer-events: none;
           z-index: 99998;
+          transform: translate3d(-50%, -50%, 0);
+          will-change: left, top;
         }
 
         .cursor-dots::before,
@@ -498,6 +365,51 @@ export default function CustomCursor() {
           text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
+        /* Hover States for Outer Cursor */
+        .cursor-outer.cursor-mousedown {
+          width: 30px;
+          height: 30px;
+          border-width: 3px;
+        }
+
+        .cursor-outer.cursor-hover-link {
+          width: 80px;
+          height: 80px;
+          border-color: #849826;
+          background-color: rgba(132, 152, 38, 0.1);
+        }
+
+        .cursor-outer.cursor-hover-input {
+          width: 60px;
+          height: 60px;
+          border-color: #849826;
+        }
+
+        .cursor-outer.cursor-hover-image {
+          width: 100px;
+          height: 100px;
+          border-width: 1px;
+          border-color: #849826;
+        }
+
+        .cursor-outer.cursor-hover-text {
+          width: 120px;
+          height: 120px;
+          background-color: rgba(132, 152, 38, 0.95);
+          border-color: #849826;
+        }
+
+        /* Hover States for Inner Cursor */
+        .cursor-inner.cursor-hover-link-inner,
+        .cursor-inner.cursor-hover-text-inner {
+          transform: translate3d(-50%, -50%, 0) scale(0) !important;
+        }
+
+        .cursor-inner.cursor-hover-image-inner {
+          transform: translate3d(-50%, -50%, 0) scale(1.5) !important;
+          background-color: rgba(132, 152, 38, 0.5);
+        }
+
         /* Mobile Touch Styles */
         .touch-indicator {
           position: fixed;
@@ -514,6 +426,9 @@ export default function CustomCursor() {
           box-shadow: 
             0 0 20px rgba(132, 152, 38, 0.4),
             inset 0 0 20px rgba(132, 152, 38, 0.2);
+          transform: translate3d(-50%, -50%, 0) scale(0.3);
+          transition: left 0.05s ease, top 0.05s ease, transform 0.15s ease, opacity 0.4s ease;
+          will-change: left, top, transform;
         }
 
         .touch-ripple {
@@ -527,6 +442,23 @@ export default function CustomCursor() {
           pointer-events: none;
           z-index: 99998;
           opacity: 0;
+          transform: translate3d(-50%, -50%, 0);
+          will-change: left, top, transform;
+        }
+
+        .touch-ripple.ripple-anim {
+          animation: touchRippleEffect 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+        }
+
+        @keyframes touchRippleEffect {
+          0% {
+            transform: translate3d(-50%, -50%, 0) scale(0.3);
+            opacity: 0.8;
+          }
+          100% {
+            transform: translate3d(-50%, -50%, 0) scale(1.8);
+            opacity: 0;
+          }
         }
 
         /* Smooth transitions */

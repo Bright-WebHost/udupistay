@@ -55,6 +55,9 @@ const homestayImages: Record<string, string[]> = {
     "/view/new/11.webp", "/view/new/12.webp", "/view/new/13.webp",
     "/view/new/_DSC3560.webp", "/view/new/_DSC3565.webp", "/view/new/_DSC3591.webp",
   ],
+  hillsidecottage: [
+    "/hillside-cottage.png"
+  ],
   farmhouse:     ['/farmhouse/1.webp', '/farmhouse/2.webp', '/farmhouse/3.webp', '/farmhouse/4.webp', '/farmhouse/5.webp', '/farmhouse/6.webp', '/farmhouse/7.webp', '/farmhouse/9.webp', '/farmhouse/11.webp'],
 };
 
@@ -882,7 +885,7 @@ export default function GalleryPage() {
           return (
             <div
               key={stay.id}
-              className={`ms-card${stay.id === "farmhouse" || (idx + 1) % 7 === 0 ? " ms-card-full" : ""}`}
+              className="ms-card"
               onClick={() => {
                 if (suppressCardOpenRef.current[stay.id]) return;
                 openModal(stay);

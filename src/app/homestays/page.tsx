@@ -287,16 +287,26 @@ export default function StaysPage() {
                         <div className="flex items-center gap-4">
                           <div className="flex items-center gap-1.5">
                             <span className="text-white/70">◆</span>
-                            <span className="font-semibold">{stay.rooms} Rooms</span>
+                            <span className="font-semibold">
+                              {stay.rooms > 0 
+                                ? `${stay.rooms} Rooms` 
+                                : stay.id === "farmhouse" 
+                                  ? "Farm Visit" 
+                                  : "Pool Area"}
+                            </span>
                           </div>
-                          <div className="flex items-center gap-1.5">
-                            <span className="text-white/70">◆</span>
-                            <span className="font-semibold">{stay.guests} Guests</span>
+                          {stay.guests > 0 && (
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-white/70">◆</span>
+                              <span className="font-semibold">{stay.guests} Guests</span>
+                            </div>
+                          )}
+                        </div>
+                        {stay.bathrooms > 0 && (
+                          <div className="text-white/70 text-xs uppercase tracking-widest">
+                            {stay.bathrooms} Baths
                           </div>
-                        </div>
-                        <div className="text-white/70 text-xs uppercase tracking-widest">
-                          {stay.bathrooms} Baths
-                        </div>
+                        )}
                       </div>
                     </div>
                   </div>
